@@ -1,0 +1,17 @@
+import { Input } from "../atoms/input";
+
+interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  id?: string;
+}
+
+export default function InputField({ label, id, ...props }: InputFieldProps) {
+  // id = typeof id !== undefined ? id : "";
+
+  return (
+    <div className="flex gap-2 items-center justify-end">
+      <label htmlFor={id}>{label}</label>
+      <Input {...props} id={id} />
+    </div>
+  );
+}
