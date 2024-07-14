@@ -1,4 +1,4 @@
-import InteractiveODComponent from "@/components/interactive/InteractiveODApp";
+import InteractiveODComponent from "@/components/od/interactive/InteractiveODApp";
 import ODTableApp from "@/components/od/table/ODTableApp";
 import {
   Tabs,
