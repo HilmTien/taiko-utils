@@ -5,12 +5,12 @@ import React from "react";
 
 interface ODState {
   table: { min: number; max: number; step: number };
-  interactive: { activeMods: Record<ODAdjustingMod, boolean> };
+  interactive: { activeMods: Record<ODAdjustingMod, boolean>; od: number };
 }
 
 type ODAction =
   | {
-      type: "setTableMin" | "setTableMax" | "setTableStep";
+      type: "setTableMin" | "setTableMax" | "setTableStep" | "setInteractiveOD";
       value: number;
     }
   | {
@@ -20,7 +20,10 @@ type ODAction =
 
 const initialODState: ODState = {
   table: { min: 0, max: 10, step: 0.1 },
-  interactive: { activeMods: { dt: false, hr: false, ez: false, ht: false } },
+  interactive: {
+    activeMods: { dt: false, hr: false, ez: false, ht: false },
+    od: 5,
+  },
 };
 
 function getFormOD(value: number) {
@@ -93,6 +96,15 @@ function reducer(state: ODState, action: ODAction) {
             ht: state.interactive.activeMods["ht"] && action.mod !== "dt",
             [action.mod]: !state.interactive.activeMods[action.mod],
           },
+        },
+      };
+    }
+    case "setInteractiveOD": {
+      return {
+        ...state,
+        interactive: {
+          ...state.interactive,
+          od: action.value,
         },
       };
     }
