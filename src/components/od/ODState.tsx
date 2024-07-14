@@ -1,18 +1,26 @@
 "use client";
 
+import { ODAdjustingMod } from "@/lib/modIcons";
 import React from "react";
 
 interface ODState {
   table: { min: number; max: number; step: number };
+  interactive: { activeMods: Record<ODAdjustingMod, boolean> };
 }
 
-type ODAction = {
-  type: "setTableMin" | "setTableMax" | "setTableStep";
-  value: number;
-};
+type ODAction =
+  | {
+      type: "setTableMin" | "setTableMax" | "setTableStep";
+      value: number;
+    }
+  | {
+      type: "interactiveModChanged";
+      mod: ODAdjustingMod;
+    };
 
 const initialODState: ODState = {
   table: { min: 0, max: 10, step: 0.1 },
+  interactive: { activeMods: { dt: false, hr: false, ez: false, ht: false } },
 };
 
 function getFormOD(value: number) {
@@ -68,6 +76,23 @@ function reducer(state: ODState, action: ODAction) {
             Number.isNaN(action.value) || action.value <= 0
               ? 0.01
               : action.value,
+        },
+      };
+    }
+    case "interactiveModChanged": {
+      return {
+        ...state,
+        interactive: {
+          ...state.interactive,
+          activeMods: {
+            ...state.interactive.activeMods,
+            // disable other mods for invalid mods (eg. EZHR, HTHRDT)
+            ez: state.interactive.activeMods["ez"] && action.mod !== "hr",
+            hr: state.interactive.activeMods["hr"] && action.mod !== "ez",
+            dt: state.interactive.activeMods["dt"] && action.mod !== "ht",
+            ht: state.interactive.activeMods["ht"] && action.mod !== "dt",
+            [action.mod]: !state.interactive.activeMods[action.mod],
+          },
         },
       };
     }
