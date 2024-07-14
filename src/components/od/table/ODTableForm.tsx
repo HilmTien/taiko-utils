@@ -2,7 +2,7 @@
 
 import InputField from "@/components/ui/molecules/InputField";
 import React from "react";
-import { ODDispatchContext, ODStateContext } from "./ODState";
+import { ODDispatchContext, ODStateContext } from "../ODState";
 
 export default function ODTableForm() {
   const state = React.useContext(ODStateContext);

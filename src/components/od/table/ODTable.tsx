@@ -1,6 +1,9 @@
+"use client";
+
+import { ScrollArea } from "@/components/ui/atoms/scroll-area";
 import { ODtoMS150, ODtoMS300 } from "@/lib/od/overallDifficulty";
 import React from "react";
-import { ODStateContext } from "./ODState";
+import { ODStateContext } from "../ODState";
 
 export default function ODTable() {
   const state = React.useContext(ODStateContext);
@@ -17,23 +20,25 @@ export default function ODTable() {
   ODValues.push(max);
 
   return (
-    <table className="table-fixed w-80 text-center">
-      <thead className="border-b-2">
-        <tr>
-          <th>OD</th>
-          <th>+- ms 300</th>
-          <th>+- ms 150</th>
-        </tr>
-      </thead>
-      <tbody>
-        {ODValues.map((od) => (
-          <tr key={od}>
-            <td>{od}</td>
-            <td>{ODtoMS300(od)}</td>
-            <td>{ODtoMS150(od)}</td>
+    <ScrollArea className="h-[80vh] border-b-4 border-t-4">
+      <table className="table-fixed w-80 text-center">
+        <thead>
+          <tr className="border-b-2">
+            <th className="py-1">OD</th>
+            <th className="py-1">+- ms 300</th>
+            <th className="py-1">+- ms 150</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {ODValues.map((od) => (
+            <tr key={od}>
+              <td className="py-1">{od}</td>
+              <td className="py-1">{ODtoMS300(od)}</td>
+              <td className="py-1">{ODtoMS150(od)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </ScrollArea>
   );
 }
