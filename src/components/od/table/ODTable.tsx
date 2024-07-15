@@ -20,7 +20,7 @@ export default function ODTable() {
   ODValues.push(max);
 
   return (
-    <ScrollArea className="h-[80vh] border-b-4 border-t-4">
+    <ScrollArea className="h-[60vh] md:h-[80vh] border-b-4 border-t-4">
       <table className="table-fixed w-80 text-center">
         <thead>
           <tr className="border-b-2">

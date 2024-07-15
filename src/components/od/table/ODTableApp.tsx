@@ -3,7 +3,7 @@ import ODTableForm from "./ODTableForm";
 
 export default function ODTableApp() {
   return (
-    <div className="flex justify-start gap-4">
+    <div className="flex flex-col md:flex-row justify-start gap-4">
       <ODTableForm />
       <ODTable />
     </div>
