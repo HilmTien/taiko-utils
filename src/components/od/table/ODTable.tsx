@@ -2,6 +2,7 @@
 
 import { ScrollArea } from "@/components/ui/atoms/scroll-area";
 import { ODtoMS150, ODtoMS300 } from "@/lib/od/overallDifficulty";
+import { round } from "@/lib/utils";
 import React from "react";
 import { ODStateContext } from "../ODState";
 
@@ -14,7 +15,7 @@ export default function ODTable() {
 
   while (min < max) {
     ODValues.push(min);
-    min = Math.round((min + step) * 100) / 100;
+    min = round(min + step, 2);
   }
 
   ODValues.push(max);
