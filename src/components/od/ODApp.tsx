@@ -11,7 +11,7 @@ import { ODStateProvider } from "./ODState";
 export default function ODApp() {
   return (
     <ODStateProvider>
-      <Tabs defaultValue="table">
+      <Tabs defaultValue="interactive">
         <TabsList>
           <TabsTrigger value="table">Table</TabsTrigger>
           <TabsTrigger value="interactive">Interactive</TabsTrigger>

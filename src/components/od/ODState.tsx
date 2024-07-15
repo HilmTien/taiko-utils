@@ -104,7 +104,7 @@ function reducer(state: ODState, action: ODAction) {
         ...state,
         interactive: {
           ...state.interactive,
-          od: action.value,
+          od: getFormOD(action.value),
         },
       };
     }
