@@ -5,13 +5,13 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/atoms/tabs";
+} from "@/components/ui/atoms/Tabs";
 import { ODStateProvider } from "./ODState";
 
 export default function ODApp() {
   return (
     <ODStateProvider>
-      <Tabs defaultValue="interactive">
+      <Tabs className="flex flex-col items-center" defaultValue="interactive">
         <TabsList>
           <TabsTrigger value="table">Table</TabsTrigger>
           <TabsTrigger value="interactive">Interactive</TabsTrigger>
@@ -19,7 +19,7 @@ export default function ODApp() {
         <TabsContent value="table">
           <ODTableApp />
         </TabsContent>
-        <TabsContent value="interactive">
+        <TabsContent className="w-full flex justify-center" value="interactive">
           <InteractiveODComponent />
         </TabsContent>
       </Tabs>
