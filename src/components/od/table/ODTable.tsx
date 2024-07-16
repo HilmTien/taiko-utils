@@ -1,6 +1,6 @@
 "use client";
 
-import { ScrollArea } from "@/components/ui/atoms/scroll-area";
+import { ScrollArea } from "@/components/ui/atoms/ScrollArea";
 import { ODtoMS150, ODtoMS300 } from "@/lib/od/overallDifficulty";
 import { round } from "@/lib/utils";
 import React from "react";

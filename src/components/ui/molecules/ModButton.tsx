@@ -4,7 +4,7 @@ import { ODDispatchContext, ODStateContext } from "@/components/od/ODState";
 import { ODAdjustingMod } from "@/lib/modIcons";
 import Image from "next/image";
 import React from "react";
-import { Button } from "../atoms/button";
+import { Button } from "../atoms/Button";
 
 interface ModButtonProps {
   mod: ODAdjustingMod;
