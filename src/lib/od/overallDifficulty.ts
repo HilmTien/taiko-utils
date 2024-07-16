@@ -6,7 +6,7 @@ export function ODtoMS300(od: number) {
 }
 
 export function MStoOD300(ms: number) {
-  return -ms / 3 + 16.5;
+  return Math.floor(49.5 - ms) / 3;
 }
 
 export function ODtoMS150(od: number) {
@@ -14,7 +14,7 @@ export function ODtoMS150(od: number) {
 }
 
 export function MStoOD150(ms: number) {
-  return ms > 79 ? -ms / 8 + 239 / 16 : (-1 / 12) * (2 * ms - 219);
+  return ms > 79 ? Math.floor(119.5 - ms) / 8 : Math.floor(109.5 - ms) / 6;
 }
 
 export function applyMods(
