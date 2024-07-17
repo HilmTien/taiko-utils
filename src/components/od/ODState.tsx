@@ -16,6 +16,10 @@ type ODAction =
   | {
       type: "interactiveModChanged";
       mod: ODAdjustingMod;
+    }
+  | {
+      type: "useLocalStorage";
+      state: ODState;
     };
 
 const initialODState: ODState = {
@@ -40,6 +44,9 @@ function getFormOD(value: number) {
 
 function reducer(state: ODState, action: ODAction) {
   switch (action.type) {
+    case "useLocalStorage": {
+      return action.state;
+    }
     case "setTableMin": {
       return {
         ...state,
