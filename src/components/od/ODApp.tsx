@@ -16,27 +16,27 @@ export default function ODApp() {
   const dispatch = React.useContext(ODDispatchContext);
 
   React.useEffect(() => {
+    let initialState = localStorage.getItem("od");
+    if (initialState !== null) {
+      const data = JSON.parse(initialState);
+      dispatch({ type: "useLocalStorage", state: data });
+    }
+  }, []);
+
+  React.useEffect(() => {
     const handleUnload = (_: Event) => {
       localStorage.setItem("od", JSON.stringify(state));
     };
 
+    // for different devices
     window.addEventListener("beforeunload", handleUnload);
+    window.addEventListener("unload", handleUnload);
 
     return () => {
       window.removeEventListener("beforeunload", handleUnload);
+      window.removeEventListener("unload", handleUnload);
     };
   }, [state]);
-
-  React.useEffect(() => {
-    try {
-      let initialState = localStorage.getItem("od");
-      if (initialState === null) {
-        throw new Error("first time eh?");
-      }
-      const data = JSON.parse(initialState);
-      dispatch({ type: "useLocalStorage", state: data });
-    } catch (error) {}
-  }, []);
 
   return (
     <Tabs className="flex flex-col items-center" defaultValue="interactive">
