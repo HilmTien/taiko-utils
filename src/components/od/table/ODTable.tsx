@@ -26,8 +26,8 @@ export default function ODTable() {
         <thead>
           <tr className="border-b-2">
             <th className="py-1">OD</th>
-            <th className="py-1">+- ms 300</th>
-            <th className="py-1">+- ms 150</th>
+            <th className="py-1">± ms 300</th>
+            <th className="py-1">± ms 150</th>
           </tr>
         </thead>
         <tbody>
