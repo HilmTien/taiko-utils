@@ -7,7 +7,8 @@ export default function InteractiveODCalc() {
 
   let { ms300, ms150, odMax300, odMax150 } = applyMods(
     state.interactive.od,
-    state.interactive.activeMods
+    state.interactive.activeMods,
+    state.interactive.useLinearOD
   );
 
   return (

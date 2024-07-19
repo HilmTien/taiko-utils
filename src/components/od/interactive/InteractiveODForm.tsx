@@ -2,6 +2,7 @@ import { Slider } from "@/components/ui/atoms/Slider";
 import InputField from "@/components/ui/molecules/InputField";
 import React from "react";
 import { ODDispatchContext, ODStateContext } from "../ODState";
+import InteractiveODSettings from "./InteractiveODSettings";
 
 export default function InteractiveODForm() {
   let state = React.useContext(ODStateContext);
@@ -24,6 +25,7 @@ export default function InteractiveODForm() {
             })
           }
         />
+        <InteractiveODSettings />
       </div>
       <Slider
         value={[state.interactive.od]}

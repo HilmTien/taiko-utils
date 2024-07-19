@@ -5,7 +5,12 @@ import React from "react";
 
 interface ODState {
   table: { min: number; max: number; step: number };
-  interactive: { activeMods: Record<ODAdjustingMod, boolean>; od: number };
+  interactive: {
+    activeMods: Record<ODAdjustingMod, boolean>;
+    od: number;
+    allowIllegalModCombos: boolean;
+    useLinearOD: boolean;
+  };
 }
 
 type ODAction =
@@ -20,6 +25,10 @@ type ODAction =
   | {
       type: "useLocalStorage";
       state: ODState;
+    }
+  | {
+      type: "setInteractiveAllowIllegalModCombos" | "setInteractiveUseLinearOD";
+      value: boolean;
     };
 
 const initialODState: ODState = {
@@ -27,6 +36,8 @@ const initialODState: ODState = {
   interactive: {
     activeMods: { dt: false, hr: false, ez: false, ht: false },
     od: 5,
+    allowIllegalModCombos: false,
+    useLinearOD: false,
   },
 };
 
@@ -97,10 +108,18 @@ function reducer(state: ODState, action: ODAction) {
           activeMods: {
             ...state.interactive.activeMods,
             // disable other mods for invalid mods (eg. EZHR, HTHRDT)
-            ez: state.interactive.activeMods["ez"] && action.mod !== "hr",
-            hr: state.interactive.activeMods["hr"] && action.mod !== "ez",
-            dt: state.interactive.activeMods["dt"] && action.mod !== "ht",
-            ht: state.interactive.activeMods["ht"] && action.mod !== "dt",
+            ez:
+              state.interactive.activeMods["ez"] &&
+              (action.mod !== "hr" || state.interactive.allowIllegalModCombos),
+            hr:
+              state.interactive.activeMods["hr"] &&
+              (action.mod !== "ez" || state.interactive.allowIllegalModCombos),
+            dt:
+              state.interactive.activeMods["dt"] &&
+              (action.mod !== "ht" || state.interactive.allowIllegalModCombos),
+            ht:
+              state.interactive.activeMods["ht"] &&
+              (action.mod !== "dt" || state.interactive.allowIllegalModCombos),
             [action.mod]: !state.interactive.activeMods[action.mod],
           },
         },
@@ -112,6 +131,24 @@ function reducer(state: ODState, action: ODAction) {
         interactive: {
           ...state.interactive,
           od: getFormOD(action.value),
+        },
+      };
+    }
+    case "setInteractiveAllowIllegalModCombos": {
+      return {
+        ...state,
+        interactive: {
+          ...state.interactive,
+          allowIllegalModCombos: action.value,
+        },
+      };
+    }
+    case "setInteractiveUseLinearOD": {
+      return {
+        ...state,
+        interactive: {
+          ...state.interactive,
+          useLinearOD: action.value,
         },
       };
     }
