@@ -28,6 +28,7 @@ export default function InteractiveODForm() {
         <InteractiveODSettings />
       </div>
       <Slider
+        ariaLabel="OD"
         value={[state.interactive.od]}
         onValueChange={(value) =>
           dispatch({ type: "setInteractiveOD", value: value[0] })
