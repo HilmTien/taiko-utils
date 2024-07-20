@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/atoms/DropdownMenu";
 import { Separator } from "@/components/ui/atoms/Separator";
+import { keepOpen } from "@/lib/utils";
 import React from "react";
 import { ODDispatchContext, ODStateContext } from "../ODState";
 
@@ -23,7 +24,7 @@ export default function InteractiveODSettings() {
           Open
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent side="left">
+      <DropdownMenuContent side="left" align="start">
         <DropdownMenuLabel>Settings</DropdownMenuLabel>
         <Separator />
         <DropdownMenuCheckboxItem
@@ -34,6 +35,7 @@ export default function InteractiveODSettings() {
               value: nextState,
             })
           }
+          onSelect={keepOpen}
         >
           Allow invalid mod combinations
         </DropdownMenuCheckboxItem>
@@ -45,6 +47,7 @@ export default function InteractiveODSettings() {
               value: nextState,
             })
           }
+          onSelect={keepOpen}
         >
           Use linear OD function (for DT / HT)
         </DropdownMenuCheckboxItem>
