@@ -21,7 +21,7 @@ export default function InteractiveODSettings() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="h-8 w-8">
+        <Button className="h-8 w-8" aria-label="Settings">
           <Cog8ToothIcon />
         </Button>
       </DropdownMenuTrigger>
