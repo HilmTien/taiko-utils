@@ -1,16 +1,20 @@
 import { ODAdjustingMod } from "../modIcons";
 import { round } from "../utils";
 
-export function ODtoMS300(od: number) {
-  return Math.floor(49 - od * 3) + 0.5;
+export function ODtoMS300(od: number, useLinearOD: boolean = false) {
+  return useLinearOD ? 49.5 - od * 3 : Math.floor(49 - od * 3) + 0.5;
 }
 
 export function MStoOD300(ms: number, useLinearOD: boolean = false) {
   return useLinearOD ? (49.5 - ms) / 3 : Math.floor(49.5 - ms) / 3;
 }
 
-export function ODtoMS150(od: number) {
-  return Math.floor(od < 5 ? 119 - 8 * od : 109 - 6 * od) + 0.5;
+export function ODtoMS150(od: number, useLinearOD: boolean = false) {
+  if (useLinearOD) {
+    return od < 5 ? 119.5 - 8 * od : 109.5 - 6 * od;
+  } else {
+    return Math.floor(od < 5 ? 119 - 8 * od : 109 - 6 * od) + 0.5;
+  }
 }
 
 export function MStoOD150(ms: number, useLinearOD: boolean = false) {
