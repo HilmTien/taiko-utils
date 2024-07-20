@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/atoms/DropdownMenu";
 import { Separator } from "@/components/ui/atoms/Separator";
 import { keepOpen } from "@/lib/utils";
+import { Cog8ToothIcon } from "@heroicons/react/24/outline";
 import React from "react";
 import { ODDispatchContext, ODStateContext } from "../ODState";
 
@@ -20,8 +21,8 @@ export default function InteractiveODSettings() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="h-10 w-14" variant="outline">
-          Open
+        <Button className="h-8 w-8">
+          <Cog8ToothIcon />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent side="left" align="start">

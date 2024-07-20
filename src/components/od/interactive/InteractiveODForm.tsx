@@ -10,12 +10,12 @@ export default function InteractiveODForm() {
 
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <InputField
           label="OD (without mods):"
           id="set-od"
           type="number"
-          className="w-20 mb-4"
+          className="w-20"
           step={0.01}
           value={state.interactive.od}
           onChange={(e) =>
