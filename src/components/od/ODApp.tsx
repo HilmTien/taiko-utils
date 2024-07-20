@@ -24,17 +24,17 @@ export default function ODApp() {
   }, []);
 
   React.useEffect(() => {
-    const handleUnload = (_: Event) => {
-      localStorage.setItem("od", JSON.stringify(state));
+    const saveToLocalStorage = () => {
+      if (document.visibilityState == "hidden") {
+        localStorage.setItem("od", JSON.stringify(state));
+      }
     };
 
     // for different devices
-    window.addEventListener("beforeunload", handleUnload);
-    window.addEventListener("unload", handleUnload);
+    window.addEventListener("visibilitychange", saveToLocalStorage);
 
     return () => {
-      window.removeEventListener("beforeunload", handleUnload);
-      window.removeEventListener("unload", handleUnload);
+      window.removeEventListener("visibilitychange", saveToLocalStorage);
     };
   }, [state]);
 
