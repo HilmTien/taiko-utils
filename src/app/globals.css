@@ -59,6 +59,10 @@
   }
 }
 
+.recharts-surface {
+  overflow: visible;
+}
+
 @layer base {
   * {
     @apply border-border;
