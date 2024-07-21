@@ -1,7 +1,5 @@
 "use client";
 
-import InteractiveODComponent from "@/components/od/interactive/InteractiveODApp";
-import ODTableApp from "@/components/od/table/ODTableApp";
 import {
   Tabs,
   TabsContent,
@@ -10,6 +8,9 @@ import {
 } from "@/components/ui/atoms/Tabs";
 import React from "react";
 import { ODDispatchContext, ODStateContext } from "./ODState";
+import ODGraphApp from "./graph/ODGraphApp";
+import InteractiveODComponent from "./interactive/InteractiveODApp";
+import ODTableApp from "./table/ODTableApp";
 
 export default function ODApp() {
   const state = React.useContext(ODStateContext);
@@ -43,12 +44,16 @@ export default function ODApp() {
       <TabsList>
         <TabsTrigger value="table">Table</TabsTrigger>
         <TabsTrigger value="interactive">Interactive</TabsTrigger>
+        <TabsTrigger value="graph">Graph</TabsTrigger>
       </TabsList>
       <TabsContent value="table">
         <ODTableApp />
       </TabsContent>
       <TabsContent className="w-full flex justify-center" value="interactive">
         <InteractiveODComponent />
+      </TabsContent>
+      <TabsContent className="w-full flex justify-center" value="graph">
+        <ODGraphApp />
       </TabsContent>
     </Tabs>
   );
