@@ -12,3 +12,20 @@ export function round(value: number, decimals: number = 2) {
 export function keepOpen(event: Event) {
   event.preventDefault();
 }
+
+export async function getData(url: string) {
+  try {
+    const res = await fetch(url);
+
+    if (!res.ok) {
+      throw new Error(`Response status: ${res.status}`);
+    }
+
+    const json = await res.json();
+
+    return json;
+  } catch (e) {
+    console.error((e as Error).message);
+    return [];
+  }
+}
