@@ -1,18 +1,24 @@
-export function recalculate(data: Array<any>, derankedIDs: Set<number>) {
-  for (let i = 0; i < data.length; i++) {
-    if (derankedIDs.has(data[i].id)) {
-      data[i] = data.at(-1);
+import { DerankState } from "@/components/derank/DerankState";
+
+export function recalculate(derankState: DerankState) {
+  const topPlays = []
+
+  for (let i = 0; i < derankState.topPlays.length; i++) {
+    if (derankState.derankedIDs.has(derankState.topPlays[i].id)) {
+      topPlays.push(derankState.customTopPlays.get(derankState.topPlays[i].id)!);
+    } else {
+      topPlays.push(derankState.topPlays[i].pp)
     }
   }
 
-  data.sort((a, b) => {
-    return b.pp - a.pp;
+  topPlays.sort((a, b) => {
+    return b - a;
   });
 
   let rawPP = 0;
 
-  for (let i = 0; i < data.length; i++) {
-    rawPP += data[i].pp * Math.pow(0.95, i);
+  for (let i = 0; i < topPlays.length; i++) {
+    rawPP += topPlays[i] * Math.pow(0.95, i);
   }
 
   return rawPP;
