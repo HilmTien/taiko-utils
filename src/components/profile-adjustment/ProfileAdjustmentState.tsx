@@ -10,11 +10,20 @@ interface BeatmapDetails {
   url: string;
 }
 
-interface Score {
+interface ScoreStatistics {
   accuracy: number;
+  great: number;
+  ok: number;
+  miss: number;
+  combo: number;
+  maxCombo: number;
+}
+
+interface Score {
   beatmapDetails: BeatmapDetails;
   id: number;
   pp: number;
+  statistics: ScoreStatistics;
   timestamp: Date;
 }
 
@@ -54,9 +63,16 @@ function reducer(
         ...state,
         topPlays: action.data.map((score) => {
           return {
-            accuracy: score.accuracy * 100,
             id: score.id,
             pp: score.pp,
+            statistics: {
+              accuracy: score.accuracy * 100,
+              great: score.statistics.great || 0,
+              ok: score.statistics.ok || 0,
+              miss: score.statistics.miss || 0,
+              combo: score.max_combo,
+              maxCombo: score.maximum_statistics.great,
+            },
             timestamp: new Date(score.ended_at),
             beatmapDetails: {
               artist: score.beatmapset.artist,

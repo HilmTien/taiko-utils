@@ -1,9 +1,9 @@
 "use client";
 
 import { Checkbox } from "@/components/ui/atoms/Checkbox";
-import InputField from "@/components/ui/molecules/InputField";
 import { round } from "@/lib/utils";
 import React from "react";
+import { Input } from "../ui/atoms/Input";
 import {
   ProfileAdjustmentDispatchContext,
   ProfileAdjustmentStateContext,
@@ -14,9 +14,10 @@ export default function ProfileAdjustmentList() {
   const dispatch = React.useContext(ProfileAdjustmentDispatchContext);
 
   return (
-    <ul className="max-w-screen-md min-w-[28rem] relative leading-tight">
+    <ul className="max-w-screen-md min-w-[34rem] relative leading-tight">
       {state.topPlays.map((score, i) => {
         const { artist, title, difficulty } = score.beatmapDetails;
+        const { accuracy, great, ok, miss, combo, maxCombo } = score.statistics;
 
         return (
           <li
@@ -56,27 +57,48 @@ export default function ProfileAdjustmentList() {
               <div className="flex">
                 <div className="ml-3">
                   <div className="text-[14px] font-semibold">
-                    <span className="text-orange-300 inline-block min-w-16">
-                      {`${score.accuracy.toFixed(2)}%`}
+                    <span className="text-orange-300 inline-block min-w-24">
+                      {`${accuracy.toFixed(2)}%`}
                     </span>
-                    <span className="inline-block ml-3 min-w-16">
+                    <span className="inline-block min-w-20 text-primary">
                       {`${round(score.pp * Math.pow(0.95, i), 0)}pp`}
                     </span>
                   </div>
-                  <div>{`weighed ${round(Math.pow(0.95, i) * 100, 0)}%`}</div>
+                  <div>
+                    <span className="inline-block min-w-24">
+                      {"weighed "}
+                      <span className="text-primary font-semibold">
+                        {round(Math.pow(0.95, i) * 100, 0)}%
+                      </span>
+                    </span>
+                    <span className="inline-block min-w-32 font-semibold">
+                      <span className="text-blue-500">{great}</span>
+                      <span className="font-normal">{" / "}</span>
+                      <span className="text-green-500">{ok}</span>
+                      <span className="font-normal">{" / "}</span>
+                      <span className="text-red-500">{miss}</span>
+                      {combo == maxCombo ? (
+                        <span>{" FC"}</span>
+                      ) : (
+                        <span className="font-normal">{` (${combo}x / ${maxCombo}x)`}</span>
+                      )}
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="absolute bottom-2 right-5 flex gap-4 items-center">
+              <div className="absolute bottom-2 right-5 flex gap-3 items-center">
                 <div className="font-bold text-[16px]">
                   {`${round(score.pp, 0)}pp`}
                 </div>
-                <Checkbox
-                  onCheckedChange={(_) =>
-                    dispatch({ type: "flipID", id: score.id })
-                  }
-                />
-                <InputField
-                  label="Custom:"
+                <label className="text-nowrap flex flex-col gap-0.5 items-center justify-end">
+                  Custom
+                  <Checkbox
+                    onCheckedChange={(_) =>
+                      dispatch({ type: "flipID", id: score.id })
+                    }
+                  />
+                </label>
+                <Input
                   className="w-20"
                   type="number"
                   disabled={!state.customIDs.has(score.id)}
