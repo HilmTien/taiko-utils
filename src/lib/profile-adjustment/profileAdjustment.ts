@@ -1,24 +1,27 @@
 import { ProfileAdjustmentState } from "@/components/profile-adjustment/ProfileAdjustmentState";
 
-export function recalculate(derankState: ProfileAdjustmentState) {
-  const topPlays = []
+export function recalculate(profileAdjustmentState: ProfileAdjustmentState) {
+  const newTopPlays = []
 
-  for (let i = 0; i < derankState.topPlays.length; i++) {
-    if (derankState.derankedIDs.has(derankState.topPlays[i].id)) {
-      topPlays.push(derankState.customTopPlays.get(derankState.topPlays[i].id)!);
+  const {topPlays, customTopPlays, customIDs} = profileAdjustmentState
+
+  for (let i = 0; i < topPlays.length; i++) {
+    if (customIDs.has(topPlays[i].id)) {
+      newTopPlays.push(customTopPlays.get(topPlays[i].id)!);
     } else {
-      topPlays.push(derankState.topPlays[i].pp)
+      newTopPlays.push(topPlays[i].pp)
     }
   }
 
-  topPlays.sort((a, b) => {
+  // Sort descending order
+  newTopPlays.sort((a, b) => {
     return b - a;
   });
 
   let rawPP = 0;
 
-  for (let i = 0; i < topPlays.length; i++) {
-    rawPP += topPlays[i] * Math.pow(0.95, i);
+  for (let i = 0; i < newTopPlays.length; i++) {
+    rawPP += newTopPlays[i] * Math.pow(0.95, i);
   }
 
   return rawPP;

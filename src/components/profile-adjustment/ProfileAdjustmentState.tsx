@@ -7,6 +7,7 @@ interface BeatmapDetails {
   artist: string;
   title: string;
   difficulty: string;
+  url: string;
 }
 
 interface Score {
@@ -14,11 +15,12 @@ interface Score {
   beatmapDetails: BeatmapDetails;
   id: number;
   pp: number;
+  timestamp: Date;
 }
 
 export interface ProfileAdjustmentState {
   topPlays: Array<Score>;
-  derankedIDs: Set<number>;
+  customIDs: Set<number>;
   customTopPlays: Map<number, number>;
   lowestPP: number;
 }
@@ -37,7 +39,7 @@ type ProfileAdjustmentAction =
 
 const initialProfileAdjustmentState: ProfileAdjustmentState = {
   topPlays: [],
-  derankedIDs: new Set(),
+  customIDs: new Set(),
   customTopPlays: new Map(),
   lowestPP: 0,
 };
@@ -55,10 +57,12 @@ function reducer(
             accuracy: score.accuracy * 100,
             id: score.id,
             pp: score.pp,
+            timestamp: new Date(score.ended_at),
             beatmapDetails: {
               artist: score.beatmapset.artist,
               title: score.beatmapset.title,
               difficulty: score.beatmap.version,
+              url: score.beatmap.url,
             },
           };
         }),
@@ -81,7 +85,7 @@ function reducer(
     case "flipID": {
       return {
         ...state,
-        derankedIDs: flipSetMember(state.derankedIDs, action.id),
+        customIDs: flipSetMember(state.customIDs, action.id),
       };
     }
   }
