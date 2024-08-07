@@ -10,7 +10,9 @@ export default function InputField({ label, id, ...props }: InputFieldProps) {
 
   return (
     <div className="flex gap-2 items-baseline justify-end">
-      <label htmlFor={id}>{label}</label>
+      <label className="text-nowrap" htmlFor={id}>
+        {label}
+      </label>
       <Input {...props} id={id} />
     </div>
   );
