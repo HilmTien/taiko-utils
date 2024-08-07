@@ -1,6 +1,6 @@
-import { DerankState } from "@/components/derank/DerankState";
+import { ProfileAdjustmentState } from "@/components/profile-adjustment/ProfileAdjustmentState";
 
-export function recalculate(derankState: DerankState) {
+export function recalculate(derankState: ProfileAdjustmentState) {
   const topPlays = []
 
   for (let i = 0; i < derankState.topPlays.length; i++) {

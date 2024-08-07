@@ -4,11 +4,14 @@ import { Checkbox } from "@/components/ui/atoms/Checkbox";
 import InputField from "@/components/ui/molecules/InputField";
 import { round } from "@/lib/utils";
 import React from "react";
-import { DerankDispatchContext, DerankStateContext } from "./DerankState";
+import {
+  ProfileAdjustmentDispatchContext,
+  ProfileAdjustmentStateContext,
+} from "./ProfileAdjustmentState";
 
-export default function DerankList() {
-  const state = React.useContext(DerankStateContext);
-  const dispatch = React.useContext(DerankDispatchContext);
+export default function ProfileAdjustmentList() {
+  const state = React.useContext(ProfileAdjustmentStateContext);
+  const dispatch = React.useContext(ProfileAdjustmentDispatchContext);
 
   return (
     <ul className="w-max relative">

@@ -16,14 +16,14 @@ interface Score {
   pp: number;
 }
 
-export interface DerankState {
+export interface ProfileAdjustmentState {
   topPlays: Array<Score>;
   derankedIDs: Set<number>;
   customTopPlays: Map<number, number>;
   lowestPP: number;
 }
 
-type DerankAction =
+type ProfileAdjustmentAction =
   | { type: "initTopPlays"; data: Array<any> }
   | {
       type: "flipID";
@@ -35,14 +35,17 @@ type DerankAction =
       pp: number;
     };
 
-const initialDerankState: DerankState = {
+const initialProfileAdjustmentState: ProfileAdjustmentState = {
   topPlays: [],
   derankedIDs: new Set(),
   customTopPlays: new Map(),
   lowestPP: 0,
 };
 
-function reducer(state: DerankState, action: DerankAction) {
+function reducer(
+  state: ProfileAdjustmentState,
+  action: ProfileAdjustmentAction
+) {
   switch (action.type) {
     case "initTopPlays": {
       return {
@@ -84,22 +87,27 @@ function reducer(state: DerankState, action: DerankAction) {
   }
 }
 
-export const DerankStateContext =
-  React.createContext<DerankState>(initialDerankState);
-export const DerankDispatchContext = React.createContext<
-  React.Dispatch<DerankAction>
+export const ProfileAdjustmentStateContext =
+  React.createContext<ProfileAdjustmentState>(initialProfileAdjustmentState);
+export const ProfileAdjustmentDispatchContext = React.createContext<
+  React.Dispatch<ProfileAdjustmentAction>
 >(() => null);
 
-type DerankStateProviderProps = { children: React.ReactNode };
+type ProfileAdjustmentStateProviderProps = { children: React.ReactNode };
 
-export function DerankStateProvider({ children }: DerankStateProviderProps) {
-  const [DerankState, dispatch] = React.useReducer(reducer, initialDerankState);
+export function ProfileAdjustmentStateProvider({
+  children,
+}: ProfileAdjustmentStateProviderProps) {
+  const [ProfileAdjustmentState, dispatch] = React.useReducer(
+    reducer,
+    initialProfileAdjustmentState
+  );
 
   return (
-    <DerankStateContext.Provider value={DerankState}>
-      <DerankDispatchContext.Provider value={dispatch}>
+    <ProfileAdjustmentStateContext.Provider value={ProfileAdjustmentState}>
+      <ProfileAdjustmentDispatchContext.Provider value={dispatch}>
         {children}
-      </DerankDispatchContext.Provider>
-    </DerankStateContext.Provider>
+      </ProfileAdjustmentDispatchContext.Provider>
+    </ProfileAdjustmentStateContext.Provider>
   );
 }

@@ -1,7 +1,7 @@
 import { getData } from "@/lib/utils";
 
-import DerankApp from "@/components/derank/DerankApp";
-import { DerankStateProvider } from "@/components/derank/DerankState";
+import ProfileAdjustmentApp from "@/components/profile-adjustment/ProfileAdjustmentApp";
+import { ProfileAdjustmentStateProvider } from "@/components/profile-adjustment/ProfileAdjustmentState";
 
 interface PageProps {
   params: { id: string };
@@ -14,9 +14,9 @@ export default async function Page({ params: { id } }: PageProps) {
 
   return (
     <main className="p-8">
-      <DerankStateProvider>
-        <DerankApp data={data} />
-      </DerankStateProvider>
+      <ProfileAdjustmentStateProvider>
+        <ProfileAdjustmentApp data={data} />
+      </ProfileAdjustmentStateProvider>
     </main>
   );
 }
