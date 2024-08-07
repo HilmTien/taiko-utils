@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 263.5 100% 95%;
-    --foreground: 263.5 5% 0%;
-    --card: 263.5 50% 90%;
-    --card-foreground: 263.5 5% 10%;
-    --popover: 263.5 100% 95%;
-    --popover-foreground: 263.5 100% 0%;
-    --primary: 263.5 67.4% 34.9%;
+    --background: 294.7 100% 95%;
+    --foreground: 294.7 5% 10%;
+    --card: 294.7 50% 90%;
+    --card-foreground: 294.7 5% 15%;
+    --popover: 294.7 100% 95%;
+    --popover-foreground: 294.7 100% 10%;
+    --primary: 294.7 72.4% 39.8%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 263.5 30% 70%;
+    --secondary: 294.7 30% 70%;
     --secondary-foreground: 0 0% 0%;
-    --muted: 225.5 30% 85%;
-    --muted-foreground: 263.5 5% 35%;
-    --accent: 225.5 30% 80%;
-    --accent-foreground: 263.5 5% 10%;
+    --muted: 256.7 30% 85%;
+    --muted-foreground: 294.7 5% 35%;
+    --accent: 256.7 30% 80%;
+    --accent-foreground: 294.7 5% 15%;
     --destructive: 0 100% 30%;
-    --destructive-foreground: 263.5 5% 90%;
-    --border: 263.5 30% 50%;
-    --input: 263.5 30% 18%;
-    --ring: 263.5 67.4% 34.9%;
+    --destructive-foreground: 294.7 5% 90%;
+    --border: 294.7 30% 50%;
+    --input: 294.7 30% 26%;
+    --ring: 294.7 72.4% 39.8%;
     --radius: 0.5rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
@@ -31,25 +31,25 @@
     --chart-5: 27 87% 67%;
   }
   .dark {
-    --background: 263.5 50% 5%;
-    --foreground: 263.5 5% 90%;
-    --card: 263.5 50% 0%;
-    --card-foreground: 263.5 5% 90%;
-    --popover: 263.5 50% 5%;
-    --popover-foreground: 263.5 5% 90%;
-    --primary: 263.5 67.4% 34.9%;
+    --background: 294.7 50% 10%;
+    --foreground: 294.7 5% 90%;
+    --card: 294.7 50% 10%;
+    --card-foreground: 294.7 5% 90%;
+    --popover: 294.7 50% 5%;
+    --popover-foreground: 294.7 5% 90%;
+    --primary: 294.7 72.4% 39.8%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 263.5 30% 10%;
+    --secondary: 294.7 30% 20%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 225.5 30% 15%;
-    --muted-foreground: 263.5 5% 60%;
-    --accent: 225.5 30% 15%;
-    --accent-foreground: 263.5 5% 90%;
+    --muted: 256.7 30% 25%;
+    --muted-foreground: 294.7 5% 60%;
+    --accent: 256.7 30% 25%;
+    --accent-foreground: 294.7 5% 90%;
     --destructive: 0 100% 30%;
-    --destructive-foreground: 263.5 5% 90%;
-    --border: 263.5 30% 18%;
-    --input: 263.5 30% 18%;
-    --ring: 263.5 67.4% 34.9%;
+    --destructive-foreground: 294.7 5% 90%;
+    --border: 294.7 30% 26%;
+    --input: 294.7 30% 26%;
+    --ring: 294.7 72.4% 39.8%;
     --radius: 0.5rem;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -61,6 +61,17 @@
 
 .recharts-surface {
   overflow: visible;
+}
+
+a:active,
+a:hover,
+a:link,
+a:visited {
+  outline-style: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 @layer base {
