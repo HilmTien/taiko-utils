@@ -35,7 +35,12 @@ export default function ProfileAdjustmentIndex() {
         value={userID.toString()}
         onChange={onUserIDChange}
       />
-      <Button variant="default" size="default" onClick={onUserIDSubmit}>
+      <Button
+        className="mt-2"
+        variant="default"
+        size="default"
+        onClick={onUserIDSubmit}
+      >
         Submit
       </Button>
     </div>
