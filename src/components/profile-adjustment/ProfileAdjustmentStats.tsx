@@ -1,6 +1,7 @@
 import { recalculate } from "@/lib/profile-adjustment/profileAdjustment";
-import { round } from "@/lib/utils";
+import { fetcher, round } from "@/lib/utils";
 import React from "react";
+import useSWR from "swr";
 import { ProfileAdjustmentStateContext } from "./ProfileAdjustmentState";
 
 export default function ProfileAdjustmentStats() {
@@ -13,6 +14,9 @@ export default function ProfileAdjustmentStats() {
   const ppAdjusted = recalculate(state);
 
   const ppDiff = round(ppAdjusted, 0) - round(pp, 0);
+
+  const { data } = useSWR("/api/players-backend", fetcher);
+  console.log(data);
 
   function PPDiff() {
     let color, prefix;

@@ -5,6 +5,14 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export async function fetcher<JSON = any>(
+  input: RequestInfo,
+  init?: RequestInit
+): Promise<JSON> {
+  const res = await fetch(input, init);
+  return res.json();
+}
+
 export function flipSetMember<T>(set: Set<T>, value: T) {
   const setCopy = new Set(set);
   return setCopy.delete(value) ? setCopy : setCopy.add(value);
@@ -13,7 +21,7 @@ export function flipSetMember<T>(set: Set<T>, value: T) {
 export async function getData(url: string) {
   try {
     const res = await fetch(url);
-    
+
     if (!res.ok) {
       throw new Error(`Response status: ${res.status}`);
     }
