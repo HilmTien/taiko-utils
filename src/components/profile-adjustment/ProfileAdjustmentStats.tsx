@@ -29,7 +29,7 @@ export default function ProfileAdjustmentStats() {
     }
 
     return (
-      <div className={`flex items-center min-w-24 mt-4 ${color}`}>
+      <div className={`flex items-center mt-4 mr-1 ${color}`}>
         {`${prefix}${ppDiff}`}
         <small>pp</small>
       </div>
@@ -38,17 +38,17 @@ export default function ProfileAdjustmentStats() {
 
   return (
     <div className="sticky top-4 h-screen w-full">
-      <div className="flex gap-4 justify-center">
-        <div className="flex flex-col">
+      <div className="flex gap-1 justify-center">
+        <div className="flex flex-col min-w-28">
           <div className="text-xs font-semibold">{"Live"}</div>
-          <div className="text-3xl font-light min-w-36">
+          <div className="text-2xl font-light">
             {round(pp, 0)}
             <small>pp</small>
           </div>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col min-w-28">
           <div className="text-xs font-semibold">{"Custom"}</div>
-          <div className="text-3xl font-light min-w-36">
+          <div className="text-2xl font-light">
             {round(ppAdjusted, 0)}
             <small>pp</small>
           </div>

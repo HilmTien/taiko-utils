@@ -14,7 +14,7 @@ export default function ProfileAdjustmentList() {
   const dispatch = React.useContext(ProfileAdjustmentDispatchContext);
 
   return (
-    <ul className="max-w-screen-md min-w-[34rem] relative leading-tight">
+    <ul className="max-w-screen-md min-w-[33rem] relative leading-tight">
       {state.topPlays.map((score, i) => {
         const { artist, title, difficulty } = score.beatmapDetails;
         const { accuracy, great, ok, miss, combo, maxCombo } = score.statistics;
@@ -55,7 +55,7 @@ export default function ProfileAdjustmentList() {
             </div>
             <div className="px-5 py-3 relative">
               <div className="flex">
-                <div className="ml-3">
+                <div>
                   <div className="text-[14px] font-semibold">
                     <span className="text-orange-300 inline-block min-w-24">
                       {`${accuracy.toFixed(2)}%`}
@@ -99,7 +99,7 @@ export default function ProfileAdjustmentList() {
                   />
                 </label>
                 <Input
-                  className="w-20"
+                  className="w-16"
                   type="number"
                   disabled={!state.customIDs.has(score.id)}
                   defaultValue={round(state.customTopPlays.get(score.id)!, 0)}
