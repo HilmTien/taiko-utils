@@ -5,6 +5,7 @@ import {
   SessionData,
   sessionOptions,
 } from "@/lib/session";
+import { getData } from "@/lib/utils";
 import { getIronSession } from "iron-session";
 import { cookies } from "next/headers";
 import { NextRequest } from "next/server";
@@ -16,7 +17,6 @@ export async function POST(request: NextRequest) {
   const token = (await request.json()) as OsuToken;
 
   session.osuUser = makeOsuUserFromToken(token);
-  session.isLoggedInOsu = true;
   await session.save();
 
   return Response.json(session);
@@ -43,8 +43,27 @@ export async function POST(request: NextRequest) {
 export async function GET() {
   const session = await getIronSession<SessionData>(cookies(), sessionOptions);
 
-  if (!session.isLoggedInOsu) {
+  if (!session.osuUser) {
     return Response.json(defaultSession);
+  }
+
+  if (new Date() > session.osuUser.expiresAt) {
+    const headers = {
+      Accept: "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
+    };
+
+    const body = `client_id=${process.env.OSU_CLIENT_ID}&client_secret=${process.env.OSU_CLIENT_SECRET}&refresh_token=${session.osuUser.refreshToken}&grant_type=refresh_token`;
+
+    const token = (await getData("https://osu.ppy.sh/oauth/token", {
+      method: "POST",
+      headers: headers,
+      body: body,
+    })) as OsuToken;
+
+    session.osuUser = makeOsuUserFromToken(token);
+
+    await session.save();
   }
 
   return Response.json(session);
