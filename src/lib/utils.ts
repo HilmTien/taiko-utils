@@ -18,9 +18,9 @@ export function flipSetMember<T>(set: Set<T>, value: T) {
   return setCopy.delete(value) ? setCopy : setCopy.add(value);
 }
 
-export async function getData(url: string) {
+export async function getData(url: string, init?: RequestInit) {
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, init);
 
     if (!res.ok) {
       throw new Error(`Response status: ${res.status}`);

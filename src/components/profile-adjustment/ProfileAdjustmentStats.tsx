@@ -15,7 +15,10 @@ export default function ProfileAdjustmentStats() {
 
   const ppDiff = round(ppAdjusted, 0) - round(pp, 0);
 
-  const { data } = useSWR("/api/players-backend", fetcher);
+  const { data } = useSWR(
+    `/api/players-backend/user?id=${state.userId}`,
+    fetcher
+  );
   console.log(data);
 
   function PPDiff() {
@@ -45,14 +48,14 @@ export default function ProfileAdjustmentStats() {
       <div className="flex gap-1 justify-center">
         <div className="flex flex-col min-w-28">
           <div className="text-xs font-semibold">{"Live"}</div>
-          <div className="text-2xl font-light">
+          <div className="text-2xl font-normal">
             {round(pp, 0)}
             <small>pp</small>
           </div>
         </div>
         <div className="flex flex-col min-w-28">
           <div className="text-xs font-semibold">{"Custom"}</div>
-          <div className="text-2xl font-light">
+          <div className="text-2xl font-normal">
             {round(ppAdjusted, 0)}
             <small>pp</small>
           </div>

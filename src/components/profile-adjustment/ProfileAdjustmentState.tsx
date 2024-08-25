@@ -28,6 +28,7 @@ interface Score {
 }
 
 export interface ProfileAdjustmentState {
+  userId: number;
   topPlays: Array<Score>;
   customIDs: Set<number>;
   customTopPlays: Map<number, number>;
@@ -35,7 +36,7 @@ export interface ProfileAdjustmentState {
 }
 
 type ProfileAdjustmentAction =
-  | { type: "initTopPlays"; data: Array<any> }
+  | { type: "initTopPlays"; data: Array<any>; userId: string }
   | {
       type: "flipID";
       id: number;
@@ -47,6 +48,7 @@ type ProfileAdjustmentAction =
     };
 
 const initialProfileAdjustmentState: ProfileAdjustmentState = {
+  userId: Number.NaN,
   topPlays: [],
   customIDs: new Set(),
   customTopPlays: new Map(),
@@ -61,6 +63,7 @@ function reducer(
     case "initTopPlays": {
       return {
         ...state,
+        userId: parseInt(action.userId),
         topPlays: action.data.map((score) => {
           return {
             id: score.id,
