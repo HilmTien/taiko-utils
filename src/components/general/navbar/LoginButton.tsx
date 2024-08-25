@@ -30,5 +30,5 @@ export default function LoginButton() {
     }, 100);
   }
 
-  return <div onClick={login}>Hei</div>;
+  return <span onClick={login}>Login</span>;
 }

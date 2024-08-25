@@ -15,12 +15,10 @@ export interface OsuUser {
 
 export interface SessionData {
   osuUser: OsuUser | undefined;
-  isLoggedInOsu: boolean;
 }
 
 export const defaultSession: SessionData = {
   osuUser: undefined,
-  isLoggedInOsu: false,
 };
 
 export const sessionOptions: SessionOptions = {
