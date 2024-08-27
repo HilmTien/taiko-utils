@@ -13,8 +13,8 @@ export default function AuthClient({ token }: { token: OsuToken }) {
         isLoggedInOsu: true,
         osuUser: makeOsuUserFromToken(token),
       },
-    });
+    }).then((_) => window.close());
   }, []);
 
-  return <div>Yatta</div>;
+  return <div />;
 }
