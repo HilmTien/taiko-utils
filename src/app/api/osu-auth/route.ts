@@ -47,7 +47,7 @@ export async function GET() {
     return Response.json(defaultSession);
   }
 
-  if (new Date() > session.osuUser.expiresAt) {
+  if (new Date() > new Date(session.osuUser.expiresAt)) {
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/x-www-form-urlencoded",

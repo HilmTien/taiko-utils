@@ -10,7 +10,7 @@ export interface OsuToken {
 export interface OsuUser {
   accessToken: string;
   refreshToken: string;
-  expiresAt: Date;
+  expiresAt: string;
 }
 
 export interface SessionData {
@@ -33,6 +33,8 @@ export function makeOsuUserFromToken(token: OsuToken): OsuUser {
   return {
     accessToken: token.access_token,
     refreshToken: token.refresh_token,
-    expiresAt: new Date(new Date().getTime() + token.expires_in * 1000),
+    expiresAt: new Date(
+      new Date().getTime() + token.expires_in * 1000
+    ).toISOString(),
   };
 }
