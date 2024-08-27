@@ -23,9 +23,7 @@ export default function LoginButton() {
     const loop = setInterval(async () => {
       if (popup.closed) {
         clearInterval(loop);
-        const res = await fetch("/api/osu-auth/whoami");
-        const user = await res.json();
-        console.log(user);
+        location.reload();
       }
     }, 100);
   }
