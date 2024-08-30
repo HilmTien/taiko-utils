@@ -4,7 +4,7 @@ import { fetcher } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { UserExtended } from "osu-web.js";
 import React from "react";
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import { Button } from "../ui/atoms/Button";
 import InputField from "../ui/molecules/InputField";
 
@@ -13,7 +13,7 @@ export default function ProfileAdjustmentIndex() {
 
   const [userID, setUserID] = React.useState(0);
 
-  const resSelf = useSWR<UserExtended>("/api/osu/get-self", fetcher);
+  const resSelf = useSWRImmutable<UserExtended>("/api/osu/get-self", fetcher);
 
   React.useEffect(() => {
     if (!resSelf.isLoading) {

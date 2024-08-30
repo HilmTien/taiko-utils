@@ -1,25 +1,46 @@
+import useDebounce from "@/lib/hooks/useDebounce";
+import { PlayersBackendPlayerData } from "@/lib/interfaces/players-backend/interface";
 import { recalculate } from "@/lib/profile-adjustment/profileAdjustment";
 import { fetcher, round } from "@/lib/utils";
+import { UserExtended } from "osu-web.js";
 import React from "react";
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 import { ProfileAdjustmentStateContext } from "./ProfileAdjustmentState";
 
-export default function ProfileAdjustmentStats() {
+interface ProfileAdjustmentStatsProps {
+  bonusPP: number;
+}
+
+export default function ProfileAdjustmentStats({
+  bonusPP,
+}: ProfileAdjustmentStatsProps) {
   const state = React.useContext(ProfileAdjustmentStateContext);
 
-  const pp = state.topPlays.reduce((accumulator, score, i) => {
-    return accumulator + score.pp * Math.pow(0.95, i);
-  }, 0);
+  const pp =
+    state.topPlays.reduce((accumulator, score, i) => {
+      return accumulator + score.pp * Math.pow(0.95, i);
+    }, 0) + bonusPP;
 
-  const ppAdjusted = recalculate(state);
+  const ppAdjusted = recalculate(state) + bonusPP;
 
   const ppDiff = round(ppAdjusted, 0) - round(pp, 0);
 
-  const { data } = useSWR(
-    `/api/players-backend/user?id=${state.userId}`,
+  const debouncedPPA = useDebounce(ppAdjusted, 500);
+
+  const { data: playerData } = useSWRImmutable<PlayersBackendPlayerData>(
+    () =>
+      debouncedPPA
+        ? `/api/players-backend/pp?pp=${debouncedPPA.toFixed(0)}`
+        : null,
     fetcher
   );
-  console.log(data);
+
+  const { data: playerOsuData } = useSWRImmutable<UserExtended>(
+    playerData === undefined
+      ? null
+      : `/api/osu/get-player?id=${playerData.data.user_id}`,
+    fetcher
+  );
 
   function PPDiff() {
     let color, prefix;
@@ -63,7 +84,15 @@ export default function ProfileAdjustmentStats() {
         <PPDiff />
       </div>
       <div className="flex justify-center text-xs italic mt-1">
-        {"pp excludes bonus pp"}
+        {bonusPP > 0 ? "pp includes bonus pp" : "pp excludes bonus pp"}
+      </div>
+      <div className="flex justify-center mt-2 text-center">
+        The player with the current custom pp is: {playerData?.data.username}{" "}
+        {playerOsuData === undefined ? (
+          <></>
+        ) : (
+          `(#${playerOsuData.statistics.global_rank})`
+        )}
       </div>
     </div>
   );

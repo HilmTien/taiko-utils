@@ -50,6 +50,9 @@ export default function ProfileAdjustmentList() {
                       })}
                     </time>
                   </span>
+                  <span className="ml-auto italic">
+                    {score.statistics.mods.difference(state.excludeCL)}
+                  </span>
                 </div>
               </div>
             </div>
