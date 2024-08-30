@@ -20,7 +20,7 @@ export default async function Page({ searchParams }: { searchParams: any }) {
     "Content-Type": "application/x-www-form-urlencoded",
   };
 
-  const body = `client_id=${process.env.OSU_CLIENT_ID}&client_secret=${process.env.OSU_CLIENT_SECRET}&code=${code}&grant_type=authorization_code&redirect_uri=http://localhost:3000/osu/auth`;
+  const body = `client_id=${process.env.OSU_CLIENT_ID}&client_secret=${process.env.OSU_CLIENT_SECRET}&code=${code}&grant_type=authorization_code&redirect_uri=${process.env.HOST}/osu/auth`;
 
   const token = (await getData("https://osu.ppy.sh/oauth/token", {
     method: "POST",
