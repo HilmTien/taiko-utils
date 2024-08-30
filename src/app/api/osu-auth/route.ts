@@ -48,22 +48,27 @@ export async function GET() {
   }
 
   if (new Date() > new Date(session.osuUser.expiresAt)) {
-    const headers = {
-      Accept: "application/json",
-      "Content-Type": "application/x-www-form-urlencoded",
-    };
+    try {
+      const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+      };
 
-    const body = `client_id=${process.env.OSU_CLIENT_ID}&client_secret=${process.env.OSU_CLIENT_SECRET}&refresh_token=${session.osuUser.refreshToken}&grant_type=refresh_token`;
+      const body = `client_id=${process.env.OSU_CLIENT_ID}&client_secret=${process.env.OSU_CLIENT_SECRET}&refresh_token=${session.osuUser.refreshToken}&grant_type=refresh_token`;
 
-    const token = (await getData("https://osu.ppy.sh/oauth/token", {
-      method: "POST",
-      headers: headers,
-      body: body,
-    })) as OsuToken;
+      const token = (await getData("https://osu.ppy.sh/oauth/token", {
+        method: "POST",
+        headers: headers,
+        body: body,
+      })) as OsuToken;
 
-    session.osuUser = makeOsuUserFromToken(token);
+      session.osuUser = makeOsuUserFromToken(token);
 
-    await session.save();
+      await session.save();
+    } catch (error) {
+      session.destroy();
+      return Response.json(defaultSession);
+    }
   }
 
   return Response.json(session);
