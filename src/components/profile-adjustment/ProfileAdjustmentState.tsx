@@ -17,6 +17,7 @@ interface ScoreStatistics {
   miss: number;
   combo: number;
   maxCombo: number;
+  mods: Set<string>;
 }
 
 interface Score {
@@ -28,14 +29,16 @@ interface Score {
 }
 
 export interface ProfileAdjustmentState {
+  userId: number;
   topPlays: Array<Score>;
   customIDs: Set<number>;
   customTopPlays: Map<number, number>;
   lowestPP: number;
+  excludeCL: Set<string>;
 }
 
 type ProfileAdjustmentAction =
-  | { type: "initTopPlays"; data: Array<any> }
+  | { type: "initTopPlays"; data: Array<any>; userId: string }
   | {
       type: "flipID";
       id: number;
@@ -44,13 +47,18 @@ type ProfileAdjustmentAction =
       type: "setCustomTopPlay";
       id: number;
       pp: number;
+    }
+  | {
+      type: "setExcludeCL";
     };
 
 const initialProfileAdjustmentState: ProfileAdjustmentState = {
+  userId: Number.NaN,
   topPlays: [],
   customIDs: new Set(),
   customTopPlays: new Map(),
   lowestPP: 0,
+  excludeCL: new Set(["CL"]),
 };
 
 function reducer(
@@ -61,6 +69,7 @@ function reducer(
     case "initTopPlays": {
       return {
         ...state,
+        userId: parseInt(action.userId),
         topPlays: action.data.map((score) => {
           return {
             id: score.id,
@@ -72,6 +81,11 @@ function reducer(
               miss: score.statistics.miss || 0,
               combo: score.max_combo,
               maxCombo: score.maximum_statistics.great,
+              mods: new Set(
+                (score.mods as Array<{ acronym: string }>).map((mod) => {
+                  return mod.acronym;
+                })
+              ),
             },
             timestamp: new Date(score.ended_at),
             beatmapDetails: {
@@ -96,6 +110,12 @@ function reducer(
         customTopPlays: Number.isNaN(action.pp)
           ? state.customTopPlays.set(action.id, state.lowestPP)
           : state.customTopPlays.set(action.id, action.pp),
+      };
+    }
+    case "setExcludeCL": {
+      return {
+        ...state,
+        excludeCL: flipSetMember(state.excludeCL, "CL"),
       };
     }
     case "flipID": {

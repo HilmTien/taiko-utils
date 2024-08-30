@@ -14,7 +14,7 @@ export default function ProfileAdjustmentList() {
   const dispatch = React.useContext(ProfileAdjustmentDispatchContext);
 
   return (
-    <ul className="max-w-screen-md min-w-[33rem] relative leading-tight">
+    <ul className="max-w-screen-md min-w-[33rem] w-full relative leading-tight">
       {state.topPlays.map((score, i) => {
         const { artist, title, difficulty } = score.beatmapDetails;
         const { accuracy, great, ok, miss, combo, maxCombo } = score.statistics;
@@ -49,6 +49,9 @@ export default function ProfileAdjustmentList() {
                         timeZoneName: "shortOffset",
                       })}
                     </time>
+                  </span>
+                  <span className="ml-auto italic">
+                    {score.statistics.mods.difference(state.excludeCL)}
                   </span>
                 </div>
               </div>

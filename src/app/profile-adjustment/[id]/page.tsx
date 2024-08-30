@@ -10,7 +10,8 @@ interface PageProps {
 
 export default async function Page({ params: { id } }: PageProps) {
   const data: Array<any> = await getData(
-    `https://osu.ppy.sh/users/${id}/scores/best?mode=taiko&limit=100`
+    `https://osu.ppy.sh/users/${id}/scores/best?mode=taiko&limit=100`,
+    { next: { revalidate: 86400 } }
   );
 
   if (!data) {
@@ -20,7 +21,7 @@ export default async function Page({ params: { id } }: PageProps) {
   return (
     <main className="p-8">
       <ProfileAdjustmentStateProvider>
-        <ProfileAdjustmentApp data={data} />
+        <ProfileAdjustmentApp data={data} userId={id} />
       </ProfileAdjustmentStateProvider>
     </main>
   );
