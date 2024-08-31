@@ -42,23 +42,6 @@ export default function ProfileAdjustmentStats({
     fetcher
   );
 
-  const debouncedPPA = useDebounce(ppAdjusted, 500);
-
-  const { data: playerData } = useSWRImmutable<PlayersBackendPlayerData>(
-    () =>
-      debouncedPPA
-        ? `/api/players-backend/pp?pp=${debouncedPPA.toFixed(0)}`
-        : null,
-    fetcher
-  );
-
-  const { data: playerOsuData } = useSWRImmutable<UserExtended>(
-    playerData === undefined
-      ? null
-      : `/api/osu/get-player?id=${playerData.data.user_id}`,
-    fetcher
-  );
-
   function PPDiff() {
     let color, prefix;
 

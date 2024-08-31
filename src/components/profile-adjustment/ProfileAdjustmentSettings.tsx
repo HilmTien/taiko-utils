@@ -28,7 +28,7 @@ export default function ProfileAdjustmentSettings() {
           <Cog8ToothIcon />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent side="bottom" align="center">
+      <DropdownMenuContent side="left" align="start">
         <DropdownMenuLabel>Settings</DropdownMenuLabel>
         <Separator />
         <DropdownMenuCheckboxItem
