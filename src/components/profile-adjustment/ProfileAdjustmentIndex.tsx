@@ -17,7 +17,9 @@ export default function ProfileAdjustmentIndex() {
 
   React.useEffect(() => {
     if (!resSelf.isLoading) {
-      setUserID(resSelf.data!.id);
+      if (Object.keys(resSelf.data!).length !== 0) {
+        setUserID(resSelf.data!.id);
+      }
     }
   }, [resSelf.data]);
 
@@ -55,6 +57,7 @@ export default function ProfileAdjustmentIndex() {
         label={"User ID:"}
         type="number"
         step={1}
+        value={userID}
         onChange={onUserIDChange}
       />
       <Button
