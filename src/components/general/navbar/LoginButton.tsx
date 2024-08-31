@@ -28,5 +28,9 @@ export default function LoginButton() {
     }, 100);
   }
 
-  return <span onClick={login}>Login</span>;
+  return (
+    <span className="hover:cursor-pointer" onClick={login}>
+      Login
+    </span>
+  );
 }
