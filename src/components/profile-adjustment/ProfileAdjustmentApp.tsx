@@ -1,22 +1,55 @@
 "use client";
 
+import { revalidatePathname } from "@/app/actions";
+import { fetcher } from "@/lib/utils";
+import { usePathname } from "next/navigation";
+import { UserExtended } from "osu-web.js";
 import React from "react";
+import useSWRImmutable from "swr/immutable";
+import { Button } from "../ui/atoms/Button";
 import ProfileAdjustmentList from "./ProfileAdjustmentList";
-import { ProfileAdjustmentDispatchContext } from "./ProfileAdjustmentState";
+import ProfileAdjustmentSettings from "./ProfileAdjustmentSettings";
+import {
+  ProfileAdjustmentDispatchContext,
+  ProfileAdjustmentStateContext,
+} from "./ProfileAdjustmentState";
 import ProfileAdjustmentStats from "./ProfileAdjustmentStats";
 
 interface ProfileAdjustmentAppProps {
   data: Array<any>;
+  userId: string;
 }
 
 export default function ProfileAdjustmentApp({
   data,
+  userId,
 }: ProfileAdjustmentAppProps) {
+  const state = React.useContext(ProfileAdjustmentStateContext);
   const dispatch = React.useContext(ProfileAdjustmentDispatchContext);
 
   React.useEffect(() => {
-    dispatch({ type: "initTopPlays", data: data });
+    dispatch({ type: "initTopPlays", data: data, userId: userId });
   }, []);
+
+  const [bonusPP, setBonusPP] = React.useState(0);
+
+  const resSelf = useSWRImmutable<UserExtended>(
+    `/api/osu/get-player?id=${userId}`,
+    fetcher
+  );
+
+  React.useEffect(() => {
+    if (resSelf.data && Object.keys(resSelf.data).length !== 0) {
+      const bonusPP =
+        resSelf.data.statistics.pp -
+        state.topPlays.reduce((accumulator, score, i) => {
+          return accumulator + score.pp * Math.pow(0.95, i);
+        }, 0);
+      setBonusPP(bonusPP);
+    }
+  }, [resSelf.data]);
+
+  const pathname = usePathname();
 
   return (
     <div className="flex flex-col gap-2">
