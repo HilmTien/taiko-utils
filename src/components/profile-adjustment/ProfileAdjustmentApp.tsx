@@ -19,9 +19,30 @@ export default function ProfileAdjustmentApp({
   }, []);
 
   return (
-    <div className="flex gap-4">
-      <ProfileAdjustmentList />
-      <ProfileAdjustmentStats />
+    <div className="flex flex-col gap-2">
+      <div className="flex gap-4 items-center justify-between">
+        <Button
+          className="w-40"
+          variant="default"
+          size="default"
+          onClick={() => {
+            revalidatePathname(pathname).then((revalidated) => {
+              if (revalidated) {
+                location.reload();
+              } else {
+                // TODO: Add some toast notification later
+              }
+            });
+          }}
+        >
+          Update User Best
+        </Button>
+        <ProfileAdjustmentSettings />
+      </div>
+      <div className="flex gap-4">
+        <ProfileAdjustmentList />
+        <ProfileAdjustmentStats bonusPP={bonusPP} />
+      </div>
     </div>
   );
 }

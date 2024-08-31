@@ -32,7 +32,6 @@ export default function ProfileAdjustmentIndex() {
         label={"User ID:"}
         type="number"
         step={1}
-        value={userID.toString()}
         onChange={onUserIDChange}
       />
       <Button

@@ -14,6 +14,23 @@ export default function ProfileAdjustmentStats() {
 
   const ppDiff = round(ppAdjusted, 0) - round(pp, 0);
 
+  const debouncedPPA = useDebounce(ppAdjusted, 500);
+
+  const { data: playerData } = useSWRImmutable<PlayersBackendPlayerData>(
+    () =>
+      debouncedPPA
+        ? `/api/players-backend/pp?pp=${debouncedPPA.toFixed(0)}`
+        : null,
+    fetcher
+  );
+
+  const { data: playerOsuData } = useSWRImmutable<UserExtended>(
+    playerData === undefined
+      ? null
+      : `/api/osu/get-player?id=${playerData.data.user_id}`,
+    fetcher
+  );
+
   function PPDiff() {
     let color, prefix;
 
@@ -56,7 +73,16 @@ export default function ProfileAdjustmentStats() {
         <PPDiff />
       </div>
       <div className="flex justify-center text-xs italic mt-1">
-        {"pp excludes bonus pp"}
+        {bonusPP > 0 ? "pp includes bonus pp" : "pp excludes bonus pp"}
+      </div>
+      <div className="flex justify-center mt-2 text-center">
+        The player with the current custom pp is: {playerData?.data.username}{" "}
+        {playerOsuData === undefined ||
+        Object.keys(playerOsuData).length === 0 ? (
+          <></>
+        ) : (
+          `(#${playerOsuData.statistics.global_rank})`
+        )}
       </div>
     </div>
   );
