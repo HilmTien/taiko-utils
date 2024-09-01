@@ -1,9 +1,13 @@
+import Navbar from "@/components/general/navbar/Navbar";
 import ProfileAdjustmentIndex from "@/components/profile-adjustment/ProfileAdjustmentIndex";
 
 export default function Page() {
   return (
-    <main className="p-8">
-      <ProfileAdjustmentIndex />
-    </main>
+    <>
+      <Navbar />
+      <main className="p-8">
+        <ProfileAdjustmentIndex />
+      </main>
+    </>
   );
 }
