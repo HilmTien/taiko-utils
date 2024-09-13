@@ -1,28 +1,24 @@
 "use client";
 
-import { ODDispatchContext, ODStateContext } from "@/components/od/ODState";
-import { ODAdjustingMod } from "@/lib/modIcons";
+import { Mod } from "@/lib/modIcons";
 import Image from "next/image";
 import React from "react";
 import { Button } from "../atoms/Button";
 
 interface ModButtonProps {
-  mod: ODAdjustingMod;
+  mod: Mod;
+  checked?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export default function ModButton({ mod }: ModButtonProps) {
-  const state = React.useContext(ODStateContext);
-  const dispatch = React.useContext(ODDispatchContext);
-
+export default function ModButton({ mod, checked, onClick }: ModButtonProps) {
   return (
     <Button
       size={"icon"}
       className="w-[92px] h-[68px] transition grayscale aria-[checked=true]:grayscale-0 hover:scale-105 aria-[checked=true]:rotate-[4deg]"
       role="checkbox"
-      aria-checked={state.interactive.activeMods[mod]}
-      onClick={(_) => {
-        dispatch({ type: "interactiveModChanged", mod: mod });
-      }}
+      aria-checked={checked}
+      onClick={onClick}
     >
       <Image
         src={`/mod-badges/${mod}.png`}
