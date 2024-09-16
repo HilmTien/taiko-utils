@@ -1,6 +1,6 @@
 "use client";
 
-import { Mod } from "@/lib/modIcons";
+import { Mod, modNames } from "@/lib/modIcons";
 import Image from "next/image";
 import React from "react";
 import { Button } from "../atoms/Button";
@@ -19,6 +19,7 @@ export default function ModButton({ mod, checked, onClick }: ModButtonProps) {
       role="checkbox"
       aria-checked={checked}
       onClick={onClick}
+      title={modNames[mod]}
     >
       <Image
         src={`/mod-badges/${mod}.png`}
