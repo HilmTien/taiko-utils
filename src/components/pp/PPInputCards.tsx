@@ -1,12 +1,9 @@
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/atoms/Card";
-import { Input } from "../ui/atoms/Input";
 import InputField from "../ui/molecules/InputField";
 import ModButton from "../ui/molecules/ModButton";
 
