@@ -8,6 +8,7 @@ export default function Home() {
       <main className="flex flex-col gap-2">
         <Link href={"/od"}>Go to OD app</Link>
         <Link href={"/profile-adjustment"}>Go to Profile Adjustment app</Link>
+        <Link href={"/pp"}>Go to PP app</Link>
       </main>
     </>
   );
