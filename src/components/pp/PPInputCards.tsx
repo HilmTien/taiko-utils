@@ -4,10 +4,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/atoms/Card";
+import { round } from "@/lib/utils";
+import React from "react";
 import InputField from "../ui/molecules/InputField";
 import ModButton from "../ui/molecules/ModButton";
+import { PPDispatchContext, PPStateContext } from "./PPState";
 
 export default function PPInputCards() {
+  const state = React.useContext(PPStateContext);
+  const dispatch = React.useContext(PPDispatchContext);
+
   return (
     <div className="flex gap-4">
       <Card className="w-96">
@@ -22,6 +28,13 @@ export default function PPInputCards() {
               type="number"
               min={0}
               step={0.01}
+              value={state.mapStats.sr.toString()}
+              onChange={(e) =>
+                dispatch({
+                  type: "setStarRating",
+                  value: Number(e.target.value),
+                })
+              }
             ></InputField>
             <InputField
               className="w-20"
@@ -30,12 +43,23 @@ export default function PPInputCards() {
               min={0}
               max={10}
               step={0.01}
+              value={state.mapStats.od.toString()}
+              onChange={(e) =>
+                dispatch({
+                  type: "setOverallDifficulty",
+                  value: Number(e.target.value),
+                })
+              }
             ></InputField>
             <InputField
               className="w-20"
               label="Max Combo: "
               type="number"
               min={0}
+              value={state.mapStats.maxCombo.toString()}
+              onChange={(e) =>
+                dispatch({ type: "setMaxCombo", value: Number(e.target.value) })
+              }
             ></InputField>
           </div>
         </CardContent>
@@ -51,15 +75,34 @@ export default function PPInputCards() {
               label="100:"
               type="number"
               min={0}
+              value={state.accuracy.good.toString()}
+              onChange={(e) =>
+                dispatch({ type: "setGood", value: Number(e.target.value) })
+              }
             ></InputField>
             <InputField
               className="w-20"
               label="Miss:"
               type="number"
               min={0}
+              value={state.accuracy.miss.toString()}
+              onChange={(e) =>
+                dispatch({ type: "setMiss", value: Number(e.target.value) })
+              }
             ></InputField>
-            <p>
-              Calculated: <b>00.00%</b>
+            <p className="w-36 text-nowrap whitespace-nowrap">
+              Calculated:{" "}
+              <b>
+                {round(
+                  ((state.mapStats.maxCombo -
+                    state.accuracy.good -
+                    state.accuracy.miss) *
+                    100 +
+                    state.accuracy.good * 50) /
+                    state.mapStats.maxCombo
+                )}
+                %
+              </b>
             </p>
           </div>
         </CardContent>

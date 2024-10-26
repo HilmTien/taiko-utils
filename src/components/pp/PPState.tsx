@@ -50,7 +50,7 @@ function reducer(state: PPState, action: PPAction) {
         ...state,
         mapStats: {
           ...state.mapStats,
-          maxCombo: action.value < 1 ? 1 : Math.floor(action.value),
+          maxCombo: action.value < 0 ? 0 : Math.floor(action.value),
         },
       };
     }
