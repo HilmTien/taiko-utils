@@ -16,12 +16,27 @@ export default function PPInputCards() {
         </CardHeader>
         <CardContent className="flex justify-center">
           <div className="flex flex-col gap-4">
-            <InputField className="w-20" label="Star Rating:"></InputField>
+            <InputField
+              className="w-20"
+              label="Star Rating:"
+              type="number"
+              min={0}
+              step={0.01}
+            ></InputField>
             <InputField
               className="w-20"
               label="Overall Difficulty:"
+              type="number"
+              min={0}
+              max={10}
+              step={0.01}
             ></InputField>
-            <InputField className="w-20" label="Combo: "></InputField>
+            <InputField
+              className="w-20"
+              label="Max Combo: "
+              type="number"
+              min={0}
+            ></InputField>
           </div>
         </CardContent>
       </Card>
@@ -31,8 +46,18 @@ export default function PPInputCards() {
         </CardHeader>
         <CardContent className="flex justify-center">
           <div className="flex flex-col gap-4">
-            <InputField className="w-20" label="150:"></InputField>
-            <InputField className="w-20" label="Miss:"></InputField>
+            <InputField
+              className="w-20"
+              label="100:"
+              type="number"
+              min={0}
+            ></InputField>
+            <InputField
+              className="w-20"
+              label="Miss:"
+              type="number"
+              min={0}
+            ></InputField>
             <p>
               Calculated: <b>00.00%</b>
             </p>
@@ -43,11 +68,13 @@ export default function PPInputCards() {
         <CardHeader>
           <CardTitle className="flex justify-center">Mods</CardTitle>
         </CardHeader>
-        <CardContent>
-          <ModButton mod="hr"></ModButton>
-          <ModButton mod="ez"></ModButton>
-          <ModButton mod="dt"></ModButton>
-          <ModButton mod="dt"></ModButton>
+        <CardContent className="flex justify-center">
+          <div className="grid grid-cols-3 place-items-center select-none">
+            <ModButton mod="hr"></ModButton>
+            <ModButton mod="ez"></ModButton>
+            <ModButton mod="dt"></ModButton>
+            <ModButton mod="ht"></ModButton>
+          </div>
         </CardContent>
       </Card>
     </div>
