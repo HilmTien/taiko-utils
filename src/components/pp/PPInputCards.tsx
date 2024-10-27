@@ -4,6 +4,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/atoms/Card";
+import { calcAcc } from "@/lib/pp/ppCalculation";
 import { round } from "@/lib/utils";
 import React from "react";
 import InputField from "../ui/molecules/InputField";
@@ -94,12 +95,11 @@ export default function PPInputCards() {
               Calculated:{" "}
               <b>
                 {round(
-                  ((state.mapStats.maxCombo -
-                    state.accuracy.good -
-                    state.accuracy.miss) *
-                    100 +
-                    state.accuracy.good * 50) /
-                    state.mapStats.maxCombo
+                  calcAcc(
+                    state.mapStats.maxCombo,
+                    state.accuracy.good,
+                    state.accuracy.miss
+                  )
                 )}
                 %
               </b>
