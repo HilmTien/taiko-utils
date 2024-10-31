@@ -13,8 +13,9 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
   const client = new Client(session.osuUser.accessToken);
-  const data = await client.users.getUser(parseInt(searchParams.get("id")!), {
+  const data = await client.users.getUser(searchParams.get("id")!, {
     urlParams: { mode: "taiko" },
+    query: { key: searchParams.get("key") === "username" ? "username" : "id" },
   });
 
   return Response.json(data);
