@@ -20,16 +20,21 @@ export default function InteractiveODCalc() {
         {`150: ±${ms150.toFixed(2)}ms`}
       </div>
       <div className="text-xl text-center py-1">
-        {`Highest OD: ${odMax300.toFixed(2)} (±${ODtoMS300(
+        {`Result OD: ${odMax300.toFixed(2)} (±${ODtoMS300(
           odMax300,
           state.interactive.useLinearOD
         ).toFixed(2)}ms)`}
       </div>
       <div className="text-lg text-center py-1">
-        {`Highest OD (150): ${odMax150.toFixed(2)} (±${ODtoMS150(
+        {`Result OD (150): ${odMax150.toFixed(2)} (±${ODtoMS150(
           odMax150,
           state.interactive.useLinearOD
         ).toFixed(2)}ms)`}
+      </div>
+      <div className="flex justify-center text-xs italic mt-1">
+        {
+          "The resulting OD is rounded up to the highest OD that still fits the actual timings"
+        }
       </div>
     </>
   );
