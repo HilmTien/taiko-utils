@@ -3,6 +3,7 @@ import { getData } from "@/lib/utils";
 import Navbar from "@/components/general/navbar/Navbar";
 import ProfileAdjustmentApp from "@/components/profile-adjustment/ProfileAdjustmentApp";
 import { ProfileAdjustmentStateProvider } from "@/components/profile-adjustment/ProfileAdjustmentState";
+import { Score } from "@/lib/interfaces/osu-scores-best/interface";
 import { permanentRedirect } from "next/navigation";
 
 interface PageProps {
@@ -10,7 +11,7 @@ interface PageProps {
 }
 
 export default async function Page({ params: { id } }: PageProps) {
-  const data: Array<any> = await getData(
+  const data: Score[] = await getData(
     `https://osu.ppy.sh/users/${id}/scores/best?mode=taiko&limit=100`,
     { next: { revalidate: 86400 } }
   );

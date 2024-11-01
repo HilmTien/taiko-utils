@@ -1,5 +1,6 @@
 "use client";
 
+import { Score as ExternalScore } from "@/lib/interfaces/osu-scores-best/interface";
 import { flipSetMember } from "@/lib/utils";
 import React from "react";
 
@@ -38,7 +39,7 @@ export interface ProfileAdjustmentState {
 }
 
 type ProfileAdjustmentAction =
-  | { type: "initTopPlays"; data: Array<any>; userId: string }
+  | { type: "initTopPlays"; data: ExternalScore[]; userId: string }
   | {
       type: "flipID";
       id: number;
@@ -98,10 +99,13 @@ function reducer(
         }),
         customTopPlays: new Map(
           action.data.map((score) => {
-            return [score.id, action.data.at(-1).pp];
+            return [
+              score.id,
+              action.data.at(-1) === undefined ? 0 : action.data.at(-1)!.pp,
+            ];
           })
         ),
-        lowestPP: action.data.at(-1).pp,
+        lowestPP: action.data.at(-1) === undefined ? 0 : action.data.at(-1)!.pp,
       };
     }
     case "setCustomTopPlay": {
