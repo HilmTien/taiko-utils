@@ -113,12 +113,36 @@ export default function PPInputCards() {
         </CardHeader>
         <CardContent className="flex justify-center">
           <div className="grid grid-cols-3 place-items-center select-none">
-            <ModButton mod="hd"></ModButton>
-            <ModButton mod="hr"></ModButton>
-            <ModButton mod="ez"></ModButton>
-            <ModButton mod="dt"></ModButton>
-            <ModButton mod="ht"></ModButton>
-            <ModButton mod="fl"></ModButton>
+            <ModButton
+              mod="hd"
+              checked={state.selectedMods.hd}
+              onClick={() => dispatch({ type: "modSelected", mod: "hd" })}
+            ></ModButton>
+            <ModButton
+              mod="hr"
+              checked={state.selectedMods.hr}
+              onClick={() => dispatch({ type: "modSelected", mod: "hr" })}
+            ></ModButton>
+            <ModButton
+              mod="ez"
+              checked={state.selectedMods.ez}
+              onClick={() => dispatch({ type: "modSelected", mod: "ez" })}
+            ></ModButton>
+            <ModButton
+              mod="dt"
+              checked={state.selectedMods.dt}
+              onClick={() => dispatch({ type: "modSelected", mod: "dt" })}
+            ></ModButton>
+            <ModButton
+              mod="ht"
+              checked={state.selectedMods.ht}
+              onClick={() => dispatch({ type: "modSelected", mod: "ht" })}
+            ></ModButton>
+            <ModButton
+              mod="fl"
+              checked={state.selectedMods.fl}
+              onClick={() => dispatch({ type: "modSelected", mod: "fl" })}
+            ></ModButton>
           </div>
         </CardContent>
       </Card>

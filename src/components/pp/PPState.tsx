@@ -1,28 +1,40 @@
 "use client";
 
-import { ODAdjustingMod } from "@/lib/modIcons";
+import { GameplayMod } from "@/lib/modIcons";
 import React from "react";
 
 interface PPState {
   mapStats: { sr: number; od: number; maxCombo: number };
   accuracy: { good: number; miss: number };
-  selectedMods: Record<ODAdjustingMod, boolean>;
+  selectedMods: Record<GameplayMod, boolean>;
 }
 
-type PPAction = {
-  type:
-    | "setStarRating"
-    | "setOverallDifficulty"
-    | "setMaxCombo"
-    | "setGood"
-    | "setMiss";
-  value: number;
-};
+type PPAction =
+  | {
+      type:
+        | "setStarRating"
+        | "setOverallDifficulty"
+        | "setMaxCombo"
+        | "setGood"
+        | "setMiss";
+      value: number;
+    }
+  | {
+      type: "modSelected";
+      mod: GameplayMod;
+    };
 
 const initialPPState: PPState = {
   mapStats: { sr: 0, od: 5, maxCombo: 1 },
   accuracy: { good: 0, miss: 0 },
-  selectedMods: { dt: false, hr: false, ez: false, ht: false },
+  selectedMods: {
+    dt: false,
+    hr: false,
+    ez: false,
+    ht: false,
+    hd: false,
+    fl: false,
+  },
 };
 
 function reducer(state: PPState, action: PPAction) {
@@ -69,6 +81,19 @@ function reducer(state: PPState, action: PPAction) {
         accuracy: {
           ...state.accuracy,
           miss: action.value < 0 ? 0 : Math.floor(action.value),
+        },
+      };
+    }
+    case "modSelected": {
+      return {
+        ...state,
+        selectedMods: {
+          ...state.selectedMods,
+          ez: state.selectedMods["ez"] && action.mod !== "hr",
+          hr: state.selectedMods["hr"] && action.mod !== "ez",
+          dt: state.selectedMods["dt"] && action.mod !== "ht",
+          ht: state.selectedMods["ht"] && action.mod !== "dt",
+          [action.mod]: !state.selectedMods[action.mod],
         },
       };
     }
