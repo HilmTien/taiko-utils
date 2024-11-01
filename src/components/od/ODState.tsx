@@ -10,6 +10,7 @@ interface ODState {
     od: number;
     allowIllegalModCombos: boolean;
     useLinearOD: boolean;
+    useNightcore: boolean;
   };
 }
 
@@ -27,7 +28,10 @@ type ODAction =
       state: ODState;
     }
   | {
-      type: "setInteractiveAllowIllegalModCombos" | "setInteractiveUseLinearOD";
+      type:
+        | "setInteractiveAllowIllegalModCombos"
+        | "setInteractiveUseLinearOD"
+        | "setInteractiveUseNightcore";
       value: boolean;
     };
 
@@ -38,6 +42,7 @@ const initialODState: ODState = {
     od: 5,
     allowIllegalModCombos: false,
     useLinearOD: false,
+    useNightcore: false,
   },
 };
 
@@ -149,6 +154,15 @@ function reducer(state: ODState, action: ODAction) {
         interactive: {
           ...state.interactive,
           useLinearOD: action.value,
+        },
+      };
+    }
+    case "setInteractiveUseNightcore": {
+      return {
+        ...state,
+        interactive: {
+          ...state.interactive,
+          useNightcore: action.value,
         },
       };
     }
