@@ -4,7 +4,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/atoms/Card";
-import { calcAcc } from "@/lib/pp/ppCalculation";
+import { calcAcc } from "@/lib/osuUtils";
 import { round } from "@/lib/utils";
 import React from "react";
 import InputField from "../ui/molecules/InputField";
