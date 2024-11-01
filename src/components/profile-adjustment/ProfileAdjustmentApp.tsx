@@ -43,7 +43,7 @@ export default function ProfileAdjustmentApp({
     if (resSelf.data && Object.keys(resSelf.data).length !== 0) {
       const bonusPP =
         resSelf.data.statistics.pp -
-        state.topPlays.reduce((accumulator, score, i) => {
+        data.reduce((accumulator, score, i) => {
           return accumulator + score.pp * Math.pow(0.95, i);
         }, 0);
       setBonusPP(bonusPP);
