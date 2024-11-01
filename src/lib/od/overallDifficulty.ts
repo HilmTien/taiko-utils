@@ -50,7 +50,7 @@ export function applyMods(
     ms150 *= 4 / 3;
   }
 
-  if (activeMods.dt) {
+  if (activeMods.dt || activeMods.nc) {
     ms300 *= 2 / 3;
     ms150 *= 2 / 3;
   }

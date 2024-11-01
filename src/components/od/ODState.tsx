@@ -34,7 +34,7 @@ type ODAction =
 const initialODState: ODState = {
   table: { min: 0, max: 10, step: 0.1 },
   interactive: {
-    activeMods: { dt: false, hr: false, ez: false, ht: false },
+    activeMods: { dt: false, nc: false, hr: false, ez: false, ht: false },
     od: 5,
     allowIllegalModCombos: false,
     useLinearOD: false,
