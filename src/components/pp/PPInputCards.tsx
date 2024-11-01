@@ -134,14 +134,14 @@ export default function PPInputCards() {
               onClick={() => dispatch({ type: "modSelected", mod: "dt" })}
             ></ModButton>
             <ModButton
-              mod="ht"
-              checked={state.selectedMods.ht}
-              onClick={() => dispatch({ type: "modSelected", mod: "ht" })}
-            ></ModButton>
-            <ModButton
               mod="fl"
               checked={state.selectedMods.fl}
               onClick={() => dispatch({ type: "modSelected", mod: "fl" })}
+            ></ModButton>
+            <ModButton
+              mod="ht"
+              checked={state.selectedMods.ht}
+              onClick={() => dispatch({ type: "modSelected", mod: "ht" })}
             ></ModButton>
           </div>
         </CardContent>
