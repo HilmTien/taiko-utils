@@ -1,6 +1,7 @@
 "use client";
 
 import { revalidatePathname } from "@/app/actions";
+import { Score } from "@/lib/interfaces/osu-scores-best/interface";
 import { fetcher } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { UserExtended } from "osu-web.js";
@@ -16,7 +17,7 @@ import {
 import ProfileAdjustmentStats from "./ProfileAdjustmentStats";
 
 interface ProfileAdjustmentAppProps {
-  data: Array<any>;
+  data: Score[];
   userId: string;
 }
 
@@ -42,7 +43,7 @@ export default function ProfileAdjustmentApp({
     if (resSelf.data && Object.keys(resSelf.data).length !== 0) {
       const bonusPP =
         resSelf.data.statistics.pp -
-        state.topPlays.reduce((accumulator, score, i) => {
+        data.reduce((accumulator, score, i) => {
           return accumulator + score.pp * Math.pow(0.95, i);
         }, 0);
       setBonusPP(bonusPP);

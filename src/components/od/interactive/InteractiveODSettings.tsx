@@ -52,6 +52,18 @@ export default function InteractiveODSettings() {
         >
           Use linear OD function (for DT / HT)
         </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={state.interactive.useNightcore}
+          onCheckedChange={(nextState) =>
+            dispatch({
+              type: "setInteractiveUseNightcore",
+              value: nextState,
+            })
+          }
+          onSelect={keepOpen}
+        >
+          Use Nightcore icon
+        </DropdownMenuCheckboxItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

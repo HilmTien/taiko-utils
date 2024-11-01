@@ -1,15 +1,20 @@
-import { ProfileAdjustmentState } from "@/components/profile-adjustment/ProfileAdjustmentState";
+interface WeightedScore {
+  id: number;
+  pp: number;
+}
 
-export function recalculate(profileAdjustmentState: ProfileAdjustmentState) {
-  const newTopPlays = []
+export function recalculate(
+  weightedTopPlays: Array<WeightedScore>,
+  customTopPlays: Map<WeightedScore["id"], number>,
+  customIDs: Set<number>
+) {
+  const newTopPlays = [];
 
-  const {topPlays, customTopPlays, customIDs} = profileAdjustmentState
-
-  for (let i = 0; i < topPlays.length; i++) {
-    if (customIDs.has(topPlays[i].id)) {
-      newTopPlays.push(customTopPlays.get(topPlays[i].id)!);
+  for (let i = 0; i < weightedTopPlays.length; i++) {
+    if (customIDs.has(weightedTopPlays[i].id)) {
+      newTopPlays.push(customTopPlays.get(weightedTopPlays[i].id)!);
     } else {
-      newTopPlays.push(topPlays[i].pp)
+      newTopPlays.push(weightedTopPlays[i].pp);
     }
   }
 

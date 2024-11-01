@@ -31,7 +31,7 @@ export default function InteractiveODModSelection() {
           }}
         />
         <ModButton
-          mod="dt"
+          mod={state.interactive.useNightcore ? "nc" : "dt"}
           checked={state.interactive.activeMods["dt"]}
           onClick={(_) => {
             dispatch({ type: "interactiveModChanged", mod: "dt" });
