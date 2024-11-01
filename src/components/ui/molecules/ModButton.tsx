@@ -15,7 +15,7 @@ export default function ModButton({ mod, checked, onClick }: ModButtonProps) {
   return (
     <Button
       size={"icon"}
-      className="w-[92px] h-[68px] transition grayscale aria-[checked=true]:grayscale-0 hover:scale-105 aria-[checked=true]:rotate-[4deg]"
+      className="w-[88px] h-[62px] transition grayscale aria-[checked=true]:grayscale-0 hover:scale-105 aria-[checked=true]:rotate-[4deg]"
       role="checkbox"
       aria-checked={checked}
       onClick={onClick}
@@ -23,8 +23,8 @@ export default function ModButton({ mod, checked, onClick }: ModButtonProps) {
     >
       <Image
         src={`/mod-badges/${mod}.png`}
-        width={92}
-        height={68}
+        width={88}
+        height={62}
         alt={mod}
         draggable={false}
         priority={true}
