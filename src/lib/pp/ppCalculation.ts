@@ -1,33 +1,8 @@
-import { PPStateContext } from "@/components/pp/PPState";
-import React from "react";
+import { GameplayMod } from "../modIcons";
+import { applyMods } from "../od/overallDifficulty";
 
 export function calcAcc(maxCombo: number, goods: number, misses: number) {
   return ((maxCombo - goods - misses) * 100 + goods * 50) / maxCombo;
-}
-
-export function calcHitTime300(od: number) {
-  const state = React.useContext(PPStateContext);
-  let scalingOD = od;
-
-  if (state.selectedMods.ez) {
-    scalingOD /= 2;
-  }
-
-  if (state.selectedMods.hr) {
-    scalingOD *= 1.4;
-  }
-
-  const scaledOD = Math.max(Math.min(scalingOD, 10), 0);
-  let hitTime300 = 50 - 3 * scaledOD;
-
-  if (state.selectedMods.ht) {
-    hitTime300 /= 0.75;
-  }
-  if (state.selectedMods.dt) {
-    hitTime300 /= 1.5;
-  }
-
-  return hitTime300;
 }
 
 export function calcPP(
@@ -35,12 +10,11 @@ export function calcPP(
   od: number,
   maxCombo: number,
   goods: number,
-  misses: number
+  misses: number,
+  selectedMods: Record<GameplayMod, boolean>
 ) {
-  const state = React.useContext(PPStateContext);
-
   const acc = calcAcc(maxCombo, goods, misses);
-  const hitTime300 = calcHitTime300(od);
+  const hitTime300 = applyMods(od, selectedMods)["ms300"];
   const hits = maxCombo - misses;
   const effMissCount = Math.max(1.0, 1000.0 / hits) * misses;
 
@@ -61,25 +35,25 @@ export function calcPP(
 
   let multiplier = 1.13;
 
-  if (state.selectedMods.hd) {
+  if (selectedMods.hd) {
     multiplier *= 1.075;
     strainVal *= 1.025;
   }
 
-  if (state.selectedMods.ez) {
+  if (selectedMods.ez) {
     multiplier *= 0.975;
     strainVal *= 0.985;
   }
 
-  if (state.selectedMods.fl) {
+  if (selectedMods.fl) {
     strainVal *= 1.05 * strainLenBonus;
   }
 
-  if (state.selectedMods.hr) {
+  if (selectedMods.hr) {
     strainVal *= 1.05;
   }
 
-  if (state.selectedMods.hd && state.selectedMods.fl) {
+  if (selectedMods.hd && selectedMods.fl) {
     accVal *= Math.max(1.05, 1.075 * accLenBonus);
   }
 

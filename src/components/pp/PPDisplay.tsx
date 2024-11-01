@@ -19,12 +19,20 @@ export default function PPDisplay() {
       state.mapStats.od,
       state.mapStats.maxCombo,
       state.accuracy.good,
-      state.accuracy.miss
+      state.accuracy.miss,
+      state.selectedMods
     )
   );
 
   const maxPP = round(
-    calcPP(state.mapStats.sr, state.mapStats.od, state.mapStats.maxCombo, 0, 0)
+    calcPP(
+      state.mapStats.sr,
+      state.mapStats.od,
+      state.mapStats.maxCombo,
+      0,
+      0,
+      state.selectedMods
+    )
   );
 
   const diffPP = round(pp - maxPP);
