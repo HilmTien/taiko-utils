@@ -21,7 +21,9 @@ export default function ProfileAdjustmentStats({
       return accumulator + score.pp * Math.pow(0.95, i);
     }, 0) + bonusPP;
 
-  const ppAdjusted = recalculate(state) + bonusPP;
+  const ppAdjusted =
+    recalculate(state.topPlays, state.customTopPlays, state.customIDs) +
+    bonusPP;
 
   const ppDiff = round(ppAdjusted, 0) - round(pp, 0);
 
