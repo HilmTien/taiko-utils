@@ -7,11 +7,10 @@ import {
 import { calcPP } from "@/lib/pp/ppCalculation";
 import { round } from "@/lib/utils";
 import React from "react";
-import { PPDispatchContext, PPStateContext } from "./PPState";
+import { PPStateContext } from "./PPState";
 
 export default function PPDisplay() {
   const state = React.useContext(PPStateContext);
-  const dispatch = React.useContext(PPDispatchContext);
 
   const pp = round(
     calcPP(
