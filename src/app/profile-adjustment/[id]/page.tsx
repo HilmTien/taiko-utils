@@ -1,5 +1,6 @@
 import { getData } from "@/lib/utils";
 
+import Navbar from "@/components/general/navbar/Navbar";
 import ProfileAdjustmentApp from "@/components/profile-adjustment/ProfileAdjustmentApp";
 import { ProfileAdjustmentStateProvider } from "@/components/profile-adjustment/ProfileAdjustmentState";
 import { permanentRedirect } from "next/navigation";
@@ -19,10 +20,13 @@ export default async function Page({ params: { id } }: PageProps) {
   }
 
   return (
-    <main className="p-8">
-      <ProfileAdjustmentStateProvider>
-        <ProfileAdjustmentApp data={data} userId={id} />
-      </ProfileAdjustmentStateProvider>
-    </main>
+    <>
+      <Navbar />
+      <main className="p-8">
+        <ProfileAdjustmentStateProvider>
+          <ProfileAdjustmentApp data={data} userId={id} />
+        </ProfileAdjustmentStateProvider>
+      </main>
+    </>
   );
 }
