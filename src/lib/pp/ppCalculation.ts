@@ -1,4 +1,4 @@
-import { GameplayMod } from "../modIcons";
+import { PPAdjustingMod } from "../modIcons";
 import { applyMods } from "../od/overallDifficulty";
 
 export function calcAcc(maxCombo: number, goods: number, misses: number) {
@@ -11,7 +11,7 @@ export function calcPP(
   maxCombo: number,
   goods: number,
   misses: number,
-  selectedMods: Record<GameplayMod, boolean>
+  selectedMods: Record<PPAdjustingMod, boolean>
 ) {
   const acc = calcAcc(maxCombo, goods, misses);
   const hitTime300 = applyMods(od, selectedMods)["ms300"];

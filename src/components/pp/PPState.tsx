@@ -1,12 +1,12 @@
 "use client";
 
-import { GameplayMod } from "@/lib/modIcons";
+import { PPAdjustingMod } from "@/lib/modIcons";
 import React from "react";
 
 interface PPState {
   mapStats: { sr: number; od: number; maxCombo: number };
   accuracy: { good: number; miss: number };
-  selectedMods: Record<GameplayMod, boolean>;
+  selectedMods: Record<PPAdjustingMod, boolean>;
 }
 
 type PPAction =
@@ -21,7 +21,7 @@ type PPAction =
     }
   | {
       type: "modSelected";
-      mod: GameplayMod;
+      mod: PPAdjustingMod;
     };
 
 const initialPPState: PPState = {
@@ -34,6 +34,7 @@ const initialPPState: PPState = {
     ht: false,
     hd: false,
     fl: false,
+    nc: false,
   },
 };
 

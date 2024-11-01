@@ -111,7 +111,7 @@ export default function PPInputCards() {
         <CardHeader>
           <CardTitle className="flex justify-center">Mods</CardTitle>
         </CardHeader>
-        <CardContent className="flex justify-center">
+        <CardContent className="flex justify-center w-auto h-40">
           <div className="grid grid-cols-3 place-items-center select-none">
             <ModButton
               mod="hd"
