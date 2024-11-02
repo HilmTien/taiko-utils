@@ -11,7 +11,7 @@ export function calcPP(
   selectedMods: Record<PPAdjustingMod, boolean>
 ) {
   const acc = calcAcc(maxCombo, goods, misses);
-  const hitTime300 = applyMods(od, selectedMods)["ms300"];
+  const hitTime300 = applyMods(od, selectedMods, { forPPCalc: true }).ms300;
   const hits = maxCombo - misses;
   const effMissCount = Math.max(1.0, 1000.0 / hits) * misses;
 

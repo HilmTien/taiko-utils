@@ -8,7 +8,7 @@ export default function InteractiveODCalc() {
   let { ms300, ms150, odMax300, odMax150 } = applyMods(
     state.interactive.od,
     state.interactive.activeMods,
-    state.interactive.useLinearOD
+    { useLinearOD: state.interactive.useLinearOD }
   );
 
   return (
@@ -20,16 +20,14 @@ export default function InteractiveODCalc() {
         {`150: ±${ms150.toFixed(2)}ms`}
       </div>
       <div className="text-xl text-center py-1">
-        {`Result OD: ${odMax300.toFixed(2)} (±${ODtoMS300(
-          odMax300,
-          state.interactive.useLinearOD
-        ).toFixed(2)}ms)`}
+        {`Result OD: ${odMax300.toFixed(2)} (±${ODtoMS300(odMax300, {
+          useLinearOD: state.interactive.useLinearOD,
+        }).toFixed(2)}ms)`}
       </div>
       <div className="text-lg text-center py-1">
-        {`Result OD (150): ${odMax150.toFixed(2)} (±${ODtoMS150(
-          odMax150,
-          state.interactive.useLinearOD
-        ).toFixed(2)}ms)`}
+        {`Result OD (150): ${odMax150.toFixed(2)} (±${ODtoMS150(odMax150, {
+          useLinearOD: state.interactive.useLinearOD,
+        }).toFixed(2)}ms)`}
       </div>
       <div className="flex justify-center text-xs italic mt-1">
         {
