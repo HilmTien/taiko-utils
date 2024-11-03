@@ -13,7 +13,7 @@ export default function PPDisplay() {
   const state = React.useContext(PPStateContext);
 
   const pp = round(
-    calcPP(
+    calcPP(state.ppCalcMethod)(
       state.mapStats.sr,
       state.mapStats.od,
       state.mapStats.maxCombo,
@@ -24,7 +24,7 @@ export default function PPDisplay() {
   );
 
   const maxPP = round(
-    calcPP(
+    calcPP(state.ppCalcMethod)(
       state.mapStats.sr,
       state.mapStats.od,
       state.mapStats.maxCombo,
