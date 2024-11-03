@@ -1,5 +1,9 @@
 "use client";
 
+import { Button } from "@/components/ui/atoms/Button";
+import Image from "next/image";
+import avatarGuest from "public/avatar-guest.png";
+
 export default function LoginButton() {
   async function login() {
     const width = 600;
@@ -29,8 +33,17 @@ export default function LoginButton() {
   }
 
   return (
-    <span className="hover:cursor-pointer" onClick={login}>
-      Login
-    </span>
+    <Button className="h-12" variant={"ghost"} size={"default"} onClick={login}>
+      <>
+        <Image
+          src={avatarGuest}
+          width={35}
+          height={35}
+          alt={"profile picture"}
+          className="rounded-3xl"
+        />
+        <span className="ml-4">Log In</span>
+      </>
+    </Button>
   );
 }
