@@ -3,6 +3,13 @@ import { PPAdjustingMod } from "../modIcons";
 import { applyMods } from "../od/overallDifficulty";
 import { calcAcc } from "../osuUtils";
 
+export type PPCalcMethod = "2024" | "2022";
+export const calcPP = (method: PPCalcMethod) => {
+  if (method === "2022") return calcPP2022;
+
+  return calcPP2024;
+};
+
 function computeDeviationUpperBound(
   od: number,
   maxCombo: number,
