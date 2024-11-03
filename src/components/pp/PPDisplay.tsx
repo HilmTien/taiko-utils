@@ -4,7 +4,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/atoms/Card";
-import { calcPP } from "@/lib/pp/ppCalculation";
+import { calcPP2024 } from "@/lib/pp/ppCalculation";
 import { round } from "@/lib/utils";
 import React from "react";
 import { PPStateContext } from "./PPState";
@@ -13,7 +13,7 @@ export default function PPDisplay() {
   const state = React.useContext(PPStateContext);
 
   const pp = round(
-    calcPP(
+    calcPP2024(
       state.mapStats.sr,
       state.mapStats.od,
       state.mapStats.maxCombo,
@@ -24,7 +24,7 @@ export default function PPDisplay() {
   );
 
   const maxPP = round(
-    calcPP(
+    calcPP2024(
       state.mapStats.sr,
       state.mapStats.od,
       state.mapStats.maxCombo,
