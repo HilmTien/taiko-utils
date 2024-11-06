@@ -25,10 +25,10 @@ export default function LandingPageApp() {
           <h1 className="text-4xl font-extrabold pb-3">OD after mod change?</h1>
           <p className="max-w-[700px] text-violet-200 mb-5">
             The OD application gives you the ability to find the correct
-            "Overall Difficulty" after putting on mods. This is especially
-            helpful for mods like Double Time or Half Time, where the actual OD
-            is not shown. The application also includes a table and a graph to
-            give you a visualization as well.
+            &quot;Overall Difficulty&quot; after putting on mods. This is
+            especially helpful for mods like Double Time or Half Time, where the
+            actual OD is not shown. The application also includes a table and a
+            graph to give you a visualization as well.
           </p>
           <div className="flex gap-64">
             <a href={"/od"} className="h-12 w-32">
