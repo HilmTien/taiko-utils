@@ -86,10 +86,10 @@ export default function LandingPageApp() {
           </h1>
           <p className="max-w-[700px] text-violet-200 mb-5">
             The PP Application makes calculating pp much easier. By inputting
-            the beatmap's stats, your 100s and misses, and your mod combination,
-            the PP will be calculated instantly. Due to the recent PP rework,
-            the application is both compatible for the current (PPv4) and the
-            old PP calculation method (PPv3).
+            the beatmap&apos;s stats, your 100s and misses, and your mod
+            combination, the PP will be calculated instantly. Due to the recent
+            PP rework, the application is both compatible for the current (PPv4)
+            and the old PP calculation method (PPv3).
           </p>
           <div className="flex gap-32">
             <a href={"/pp"} className="h-12 w-32">
