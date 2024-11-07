@@ -20,8 +20,8 @@ export default function LandingPageApp() {
         </p>
       </div>
 
-      <div className="flex flex-col gap-2 bg-secondary pl-[15%] pt-40 h-[500px] items-center">
-        <div className="mr-[30%]">
+      <div className="flex flex-col gap-2 bg-secondary pt-40 h-[500px]">
+        <div className="mx-auto">
           <h1 className="text-4xl font-extrabold pb-3">OD after mod change?</h1>
           <p className="max-w-[700px] text-violet-200 mb-5">
             The OD application gives you the ability to find the correct
@@ -44,13 +44,13 @@ export default function LandingPageApp() {
             <Image
               src={odGraph}
               alt="od graph"
-              className="rounded-lg w-[500px] border shadow-2xl"
+              className="rounded-lg w-[600px] border shadow-2xl"
             />
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-2 bg-background pl-[15%] pt-40 h-[500px] items-center">
-        <div className="mr-[30%] mt-48">
+      <div className="flex flex-col gap-2 bg-background pt-40 h-[500px]">
+        <div className="mx-auto mt-48">
           <h1 className="text-4xl font-extrabold pb-3">
             Explore your player profile.
           </h1>
@@ -79,8 +79,8 @@ export default function LandingPageApp() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-2 bg-secondary pl-[15%] pt-40 h-[600px] items-center mt-44">
-        <div className="mr-[30%] mt-28">
+      <div className="flex flex-col gap-2 bg-secondary pt-40 h-[600px] mt-44">
+        <div className="mx-auto mt-28">
           <h1 className="text-4xl font-extrabold pb-3">
             Easy to calculate PP.
           </h1>
@@ -102,7 +102,11 @@ export default function LandingPageApp() {
                 <ChevronRight />
               </Button>
             </a>
-            <Image src={pp} alt="pp" className="rounded-lg border shadow-2xl" />
+            <Image
+              src={pp}
+              alt="pp"
+              className="rounded-lg border shadow-2xl w-[700px]"
+            />
           </div>
         </div>
       </div>
