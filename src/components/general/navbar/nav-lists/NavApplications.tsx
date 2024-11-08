@@ -82,7 +82,7 @@ export default function NavApplications() {
                               : "text-xs opacity-50 duration-300"
                           }
                         >
-                          Explore players' profile
+                          Explore players&apos; profile
                         </p>
                       </div>
                     </div>
