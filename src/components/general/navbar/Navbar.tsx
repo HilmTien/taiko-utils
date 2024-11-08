@@ -6,6 +6,7 @@ import { HomeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { UserExtended } from "osu-web.js";
 import useSWR from "swr";
+import NavApplications from "./nav-lists/NavApplications";
 import ProfileHandler from "./profile/ProfileHandler";
 
 export default function Navbar() {
@@ -21,7 +22,7 @@ export default function Navbar() {
 
   return (
     <header className="h-14 w-full top-0 bg-navbar flex justify-between">
-      <div className="ml-auto mr-auto w-[calc(100%-50px)] h-full max-w-screen-lg flex items-center">
+      <div className="ml-auto mr-auto w-[calc(100%-50px)] h-full max-w-screen-lg flex items-center gap-5">
         <Link
           href={"/"}
           className="flex items-center mr-auto hover:no-underline"
@@ -29,10 +30,9 @@ export default function Navbar() {
           <div className="h-10 w-10 mr-2">
             <HomeIcon />
           </div>
-          <h1 className="font-mono">
-            <b>TAIKO UTILS</b>
-          </h1>
+          <h1 className="font-mono font-extrabold">TAIKO UTILS</h1>
         </Link>
+        <NavApplications />
         <ProfileHandler />
       </div>
     </header>
