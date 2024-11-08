@@ -1,5 +1,6 @@
 "use client";
 
+import { NavigationMenu } from "@/components/ui/atoms/NavigationMenu";
 import useSession from "@/lib/hooks/useSession";
 import { fetcher } from "@/lib/utils";
 import { HomeIcon } from "@heroicons/react/24/outline";
@@ -32,7 +33,9 @@ export default function Navbar() {
           </div>
           <h1 className="font-mono font-extrabold">TAIKO UTILS</h1>
         </Link>
-        <NavApplications />
+        <NavigationMenu>
+          <NavApplications />
+        </NavigationMenu>
         <ProfileHandler />
       </div>
     </header>
