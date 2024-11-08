@@ -2,10 +2,12 @@
 
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import odGraph from "public/od-graph.png";
 import pp from "public/pp.png";
 import profileAdjustment from "public/profile-adjustment.png";
 import taiko from "public/taiko.png";
+import Footer from "../general/footer/Footer";
 import { Button } from "../ui/atoms/Button";
 
 export default function LandingPageApp() {
@@ -31,7 +33,7 @@ export default function LandingPageApp() {
             graph to give you a visualization as well.
           </p>
           <div className="flex gap-64">
-            <a href={"/od"} className="h-12 w-32">
+            <Link href={"/od"} className="h-12 w-32">
               <Button
                 variant={"outline"}
                 size={"default"}
@@ -40,11 +42,11 @@ export default function LandingPageApp() {
                 Try OD App
                 <ChevronRight />
               </Button>
-            </a>
+            </Link>
             <Image
               src={odGraph}
               alt="od graph"
-              className="rounded-lg w-[600px] border shadow-2xl"
+              className="rounded-lg w-[600px] border shadow-lg"
             />
           </div>
         </div>
@@ -61,7 +63,7 @@ export default function LandingPageApp() {
             placed on the global ranking.
           </p>
           <div className="flex gap-40">
-            <a href={"/profile-adjustment"} className="h-12 w-32">
+            <Link href={"/profile-adjustment"} className="h-12 w-32">
               <Button
                 variant={"default"}
                 size={"default"}
@@ -70,11 +72,11 @@ export default function LandingPageApp() {
                 Use it now
                 <ChevronRight />
               </Button>
-            </a>
+            </Link>
             <Image
               src={profileAdjustment}
               alt="profile adjustment"
-              className="rounded-lg w-[650px] border shadow-2xl"
+              className="rounded-lg w-[650px] border shadow-lg"
             />
           </div>
         </div>
@@ -92,7 +94,7 @@ export default function LandingPageApp() {
             and the old PP calculation method (PPv3).
           </p>
           <div className="flex gap-32">
-            <a href={"/pp"} className="h-12 w-32">
+            <Link href={"/pp"} className="h-12 w-32">
               <Button
                 variant={"outline"}
                 size={"default"}
@@ -101,15 +103,16 @@ export default function LandingPageApp() {
                 Calculate here
                 <ChevronRight />
               </Button>
-            </a>
+            </Link>
             <Image
               src={pp}
               alt="pp"
-              className="rounded-lg border shadow-2xl w-[700px]"
+              className="rounded-lg border shadow-lg w-[700px]"
             />
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }
