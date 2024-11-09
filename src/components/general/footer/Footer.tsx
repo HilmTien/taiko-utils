@@ -6,7 +6,7 @@ import vercel from "public/vercel-powered.png";
 
 export default function Footer() {
   return (
-    <footer className="flex mt-52 mb-10">
+    <footer className="flex mt-52 mb-10 ">
       <div className="flex flex-col mx-auto">
         <div className="flex mx-auto gap-[770px]">
           <Link href="https://vercel.com" target="_blank">
@@ -24,9 +24,7 @@ export default function Footer() {
               Copyright &copy; {new Date().getFullYear()}
             </p>
           </span>
-          <p>
-            <b>Defectum</b> & <b>TonyWorep</b>
-          </p>
+          <p>Defectum & TonyWorep</p>
         </div>
       </div>
     </footer>

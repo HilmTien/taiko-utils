@@ -3,7 +3,6 @@
 import Image from "next/image";
 
 import taiko from "public/taiko.png";
-import Footer from "../general/footer/Footer";
 import ODSection from "./sections/ODSection";
 import PPSection from "./sections/PPSection";
 import ProfileAdjustmentSection from "./sections/ProfileAdjustmentSection";
@@ -24,7 +23,6 @@ export default function LandingPageApp() {
         <ProfileAdjustmentSection />
         <PPSection />
       </main>
-      <Footer />
     </>
   );
 }

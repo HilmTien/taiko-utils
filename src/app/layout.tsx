@@ -1,3 +1,4 @@
+import Footer from "@/components/general/footer/Footer";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -17,7 +18,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, "dark")}>{children}</body>
+      <body className={cn(inter.className, "dark flex flex-col min-h-[100vh]")}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
