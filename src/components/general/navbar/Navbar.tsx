@@ -31,7 +31,9 @@ export default function Navbar() {
           <div className="h-10 w-10 mr-2">
             <HomeIcon />
           </div>
-          <h1 className="font-mono font-extrabold">TAIKO UTILS</h1>
+          <h1 className="font-mono font-extrabold text-nowrap whitespace-nowrap">
+            TAIKO UTILS
+          </h1>
         </Link>
         <NavigationMenu>
           <NavApplications />

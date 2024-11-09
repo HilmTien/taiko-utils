@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/atoms/Button";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import profileAdjustment from "public/profile-adjustment.png";
+import profileAdjustment from "public/landing-page/profile-adjustment.png";
 
 export default function ProfileAdjustmentSection() {
   return (

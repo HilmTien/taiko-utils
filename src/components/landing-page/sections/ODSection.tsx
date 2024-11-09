@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/atoms/Button";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import odGraph from "public/od-graph.png";
+import odGraph from "public/landing-page/od-graph.png";
 
 export default function ODSection() {
   return (

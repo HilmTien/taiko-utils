@@ -1,8 +1,6 @@
-"use client";
-
 import Image from "next/image";
 
-import taiko from "public/taiko.png";
+import taiko from "public/landing-page/taiko.png";
 import ODSection from "./sections/ODSection";
 import PPSection from "./sections/PPSection";
 import ProfileAdjustmentSection from "./sections/ProfileAdjustmentSection";

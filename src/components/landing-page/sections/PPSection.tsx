@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/atoms/Button";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import pp from "public/pp.png";
+import pp from "public/landing-page/pp.png";
 
 export default function PPSection() {
   return (
