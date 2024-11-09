@@ -1,12 +1,14 @@
 "use client";
 
 import { PPAdjustingMod } from "@/lib/modIcons";
+import { PPCalcMethod } from "@/lib/pp/ppCalculation";
 import React from "react";
 
 interface PPState {
   mapStats: { sr: number; od: number; maxCombo: number };
   accuracy: { good: number; miss: number };
   selectedMods: Record<PPAdjustingMod, boolean>;
+  ppCalcMethod: PPCalcMethod;
 }
 
 type PPAction =
@@ -22,6 +24,10 @@ type PPAction =
   | {
       type: "modSelected";
       mod: PPAdjustingMod;
+    }
+  | {
+      type: "setPPCalcMethod";
+      method: PPCalcMethod;
     };
 
 const initialPPState: PPState = {
@@ -36,6 +42,7 @@ const initialPPState: PPState = {
     fl: false,
     nc: false,
   },
+  ppCalcMethod: "2024",
 };
 
 function reducer(state: PPState, action: PPAction) {
@@ -96,6 +103,12 @@ function reducer(state: PPState, action: PPAction) {
           ht: state.selectedMods["ht"] && action.mod !== "dt",
           [action.mod]: !state.selectedMods[action.mod],
         },
+      };
+    }
+    case "setPPCalcMethod": {
+      return {
+        ...state,
+        ppCalcMethod: action.method,
       };
     }
   }
