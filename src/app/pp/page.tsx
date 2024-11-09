@@ -1,3 +1,4 @@
+import Footer from "@/components/general/footer/Footer";
 import Navbar from "@/components/general/navbar/Navbar";
 import PPApp from "@/components/pp/PPApp";
 import { PPStateProvider } from "@/components/pp/PPState";
@@ -11,6 +12,7 @@ export default function Page() {
           <PPApp />
         </PPStateProvider>
       </main>
+      <Footer />
     </>
   );
 }

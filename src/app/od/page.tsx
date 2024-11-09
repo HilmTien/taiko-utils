@@ -1,3 +1,4 @@
+import Footer from "@/components/general/footer/Footer";
 import Navbar from "@/components/general/navbar/Navbar";
 import ODApp from "@/components/od/ODApp";
 import { ODStateProvider } from "@/components/od/ODState";
@@ -11,6 +12,7 @@ export default function Page() {
           <ODApp />
         </ODStateProvider>
       </main>
+      <Footer />
     </>
   );
 }

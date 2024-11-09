@@ -1,5 +1,6 @@
 import { getData } from "@/lib/utils";
 
+import Footer from "@/components/general/footer/Footer";
 import Navbar from "@/components/general/navbar/Navbar";
 import ProfileAdjustmentApp from "@/components/profile-adjustment/ProfileAdjustmentApp";
 import { ProfileAdjustmentStateProvider } from "@/components/profile-adjustment/ProfileAdjustmentState";
@@ -28,6 +29,7 @@ export default async function Page({ params: { id } }: PageProps) {
           <ProfileAdjustmentApp data={data} userId={id} />
         </ProfileAdjustmentStateProvider>
       </main>
+      <Footer />
     </>
   );
 }
