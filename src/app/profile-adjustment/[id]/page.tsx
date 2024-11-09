@@ -1,6 +1,5 @@
 import { getData } from "@/lib/utils";
 
-import Navbar from "@/components/general/navbar/Navbar";
 import ProfileAdjustmentApp from "@/components/profile-adjustment/ProfileAdjustmentApp";
 import { ProfileAdjustmentStateProvider } from "@/components/profile-adjustment/ProfileAdjustmentState";
 import { Score } from "@/lib/interfaces/osu-scores-best/interface";
@@ -22,7 +21,6 @@ export default async function Page({ params: { id } }: PageProps) {
 
   return (
     <>
-      <Navbar />
       <main className="p-8">
         <ProfileAdjustmentStateProvider>
           <ProfileAdjustmentApp data={data} userId={id} />
