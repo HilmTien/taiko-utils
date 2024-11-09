@@ -24,7 +24,7 @@ export default function ProfileAdjustmentIndex() {
         setUserID(resSelf.data!.id);
       }
     }
-  }, [resSelf.data]);
+  }, [resSelf.data, resSelf.isLoading]);
 
   const onUserIDChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserID(

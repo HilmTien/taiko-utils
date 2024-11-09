@@ -40,7 +40,7 @@ export const modNames = {
   cl: "Classic",
 };
 
-export default {
+const icons = {
   dt,
   ez,
   hr,
@@ -57,4 +57,6 @@ export default {
   pf,
   nm,
   cl,
-};
+}
+
+export default icons;
