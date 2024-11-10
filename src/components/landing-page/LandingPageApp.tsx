@@ -5,6 +5,12 @@ import taiko from "public/landing-page/taiko.png";
 import tien from "public/profile-pics/hiimtien.png";
 import mrv from "public/profile-pics/mrv.png";
 import tony from "public/profile-pics/tonyworep.png";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/atoms/Tooltip";
 import ODSection from "./sections/ODSection";
 import PPSection from "./sections/PPSection";
 import ProfileAdjustmentSection from "./sections/ProfileAdjustmentSection";
@@ -21,21 +27,53 @@ export default function LandingPageApp() {
             specialize in Taiko.
           </p>
           <div className="flex gap-5 mt-24">
-            <div className="transform -rotate-6 hover:scale-110 hover:rotate-0 duration-100">
-              <Link href="https://osu.ppy.sh/users/16204122" target="_blank">
-                <Image src={tony} alt="tonyworep" />
-              </Link>
-            </div>
-            <div className="transform translate-y-5 hover:scale-150 hover:rotate-0 duration-100">
-              <Link href="https://osu.ppy.sh/users/8631719" target="_blank">
-                <Image src={tien} alt="hiimtien" width={193} />
-              </Link>
-            </div>
-            <div className="transform rotate-6 hover:scale-110 hover:rotate-0 duration-100">
-              <Link href="https://osu.ppy.sh/users/12513942" target="_blank">
-                <Image src={mrv} alt="m r v" width={193} />
-              </Link>
-            </div>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className="transform -rotate-6 hover:scale-110 hover:rotate-0 duration-100">
+                    <Link
+                      href="https://osu.ppy.sh/users/16204122"
+                      target="_blank"
+                    >
+                      <Image src={tony} alt="tonyworep" />
+                    </Link>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>TonyWorep</p>
+                </TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div className="transform translate-y-5 hover:scale-150 hover:rotate-0 duration-100">
+                    <Link
+                      href="https://osu.ppy.sh/users/8631719"
+                      target="_blank"
+                    >
+                      <Image src={tien} alt="hiimtien" width={193} />
+                    </Link>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Defectum</p>
+                </TooltipContent>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
+                  <div className="transform rotate-6 hover:scale-110 hover:rotate-0 duration-100">
+                    <Link
+                      href="https://osu.ppy.sh/users/12513942"
+                      target="_blank"
+                    >
+                      <Image src={mrv} alt="mrv" width={193} />
+                    </Link>
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>mrv</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </div>
         </div>
         <ODSection />
