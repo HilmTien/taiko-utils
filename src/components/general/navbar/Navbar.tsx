@@ -23,7 +23,7 @@ export default function Navbar() {
 
   return (
     <header className="h-14 w-full top-0 bg-navbar flex justify-between">
-      <div className="ml-auto mr-auto w-[calc(100%-50px)] h-full max-w-screen-lg flex items-center gap-5">
+      <div className="mx-auto w-[calc(100%-50px)] h-full max-w-screen-lg flex items-center gap-5">
         <Link
           href={"/"}
           className="flex items-center mr-auto hover:no-underline"
@@ -31,7 +31,7 @@ export default function Navbar() {
           <div className="h-10 w-10 mr-2">
             <HomeIcon />
           </div>
-          <h1 className="font-mono font-extrabold text-nowrap whitespace-nowrap">
+          <h1 className="font-mono font-extrabold text-nowrap whitespace-nowrap hidden sm:block">
             TAIKO UTILS
           </h1>
         </Link>

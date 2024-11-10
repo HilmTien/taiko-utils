@@ -16,7 +16,7 @@ export default function PPSection() {
           application is both compatible for the current (PPv4) and the old PP
           calculation method (PPv3).
         </p>
-        <div className="flex gap-32">
+        <div className="flex flex-col gap-5 lg:flex-row lg:gap-32 items-center lg:items-start">
           <Link href={"/pp"} className="h-12 w-32">
             <Button variant={"outline"} size={"default"} className="h-12 w-36">
               Calculate here

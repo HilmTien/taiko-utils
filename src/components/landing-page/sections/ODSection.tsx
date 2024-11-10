@@ -16,7 +16,7 @@ export default function ODSection() {
           actual OD is not shown. The application also includes a table and a
           graph to give you a visualization as well.
         </p>
-        <div className="flex gap-64">
+        <div className="flex flex-col gap-5 lg:flex-row lg:gap-52 items-center lg:items-start">
           <Link href={"/od"} className="h-12 w-32">
             <Button variant={"outline"} size={"default"} className="h-12 w-32">
               Try OD App

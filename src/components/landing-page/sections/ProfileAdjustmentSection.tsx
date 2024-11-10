@@ -17,7 +17,7 @@ export default function ProfileAdjustmentSection() {
           see how the performance points change and where they are placed on the
           global ranking.
         </p>
-        <div className="flex gap-40">
+        <div className="flex flex-col w gap-5 lg:flex-row lg:gap-40 items-center lg:items-start">
           <Link href={"/profile-adjustment"} className="h-12 w-32">
             <Button variant={"default"} size={"default"} className="h-12 w-32">
               Explore now
