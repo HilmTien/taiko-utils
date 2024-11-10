@@ -13,7 +13,7 @@ import tony from "public/profile-pics/tonyworep.png";
 
 export default function FrontSection() {
   return (
-    <section className="place-items-center h-[550px]">
+    <section className="place-items-center h-[550px] px-5">
       <Image src={taiko} alt="tako" className="w-96" />
       <h1 className="text-6xl font-extrabold">Taiko Utils</h1>
       <p className="pt-5 text-lg text-violet-200 opacity-50">

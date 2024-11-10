@@ -6,7 +6,7 @@ import pp from "public/landing-page/pp.png";
 
 export default function PPSection() {
   return (
-    <section className="flex flex-col gap-2 bg-secondary pt-40 h-[600px] mt-44">
+    <section className="flex flex-col gap-2 bg-secondary pt-40 h-[600px] mt-44 px-5">
       <div className="mx-auto mt-28">
         <h1 className="text-4xl font-extrabold pb-3">Easy to calculate PP.</h1>
         <p className="max-w-[700px] text-violet-200 mb-5">
@@ -16,7 +16,7 @@ export default function PPSection() {
           application is both compatible for the current (PPv4) and the old PP
           calculation method (PPv3).
         </p>
-        <div className="flex gap-32">
+        <div className="flex flex-col gap-5 lg:flex-row lg:gap-32 items-center lg:items-start">
           <Link href={"/pp"} className="h-12 w-32">
             <Button variant={"outline"} size={"default"} className="h-12 w-36">
               Calculate here
