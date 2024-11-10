@@ -6,7 +6,7 @@ import odGraph from "public/landing-page/od-graph.png";
 
 export default function ODSection() {
   return (
-    <section className="flex flex-col gap-2 bg-secondary pt-40 h-[500px]">
+    <section className="flex flex-col gap-2 bg-secondary pt-40 h-[500px] px-5">
       <div className="mx-auto">
         <h1 className="text-4xl font-extrabold pb-3">OD after mod change?</h1>
         <p className="max-w-[700px] text-violet-200 mb-5">

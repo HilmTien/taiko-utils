@@ -6,7 +6,7 @@ import pp from "public/landing-page/pp.png";
 
 export default function PPSection() {
   return (
-    <section className="flex flex-col gap-2 bg-secondary pt-40 h-[600px] mt-44">
+    <section className="flex flex-col gap-2 bg-secondary pt-40 h-[600px] mt-44 px-5">
       <div className="mx-auto mt-28">
         <h1 className="text-4xl font-extrabold pb-3">Easy to calculate PP.</h1>
         <p className="max-w-[700px] text-violet-200 mb-5">

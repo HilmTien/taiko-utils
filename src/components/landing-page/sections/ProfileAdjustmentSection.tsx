@@ -6,7 +6,7 @@ import profileAdjustment from "public/landing-page/profile-adjustment.png";
 
 export default function ProfileAdjustmentSection() {
   return (
-    <section className="flex flex-col gap-2 bg-background pt-40 h-[500px]">
+    <section className="flex flex-col gap-2 bg-background pt-40 h-[500px] px-5">
       <div className="mx-auto mt-48">
         <h1 className="text-4xl font-extrabold pb-3">
           Explore your player profile.
