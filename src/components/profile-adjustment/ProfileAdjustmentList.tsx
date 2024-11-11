@@ -14,7 +14,7 @@ export default function ProfileAdjustmentList() {
   const dispatch = React.useContext(ProfileAdjustmentDispatchContext);
 
   return (
-    <ul className="max-w-screen-md min-w-[33rem] w-full relative leading-tight">
+    <ul className="order-2 lg:order-1 lg:w-full lg:max-w-[50rem]">
       {state.topPlays.map((score, i) => {
         const { artist, title, difficulty } = score.beatmapDetails;
         const { accuracy, great, ok, miss, combo, maxCombo } = score.statistics;
@@ -24,8 +24,8 @@ export default function ProfileAdjustmentList() {
             key={score.id}
             className="relative rounded-xl my-1 text-[12px] min-h-16 bg-secondary "
           >
-            <div className="px-5 py-3 rounded-xl min-w-0 flex items-center border-b-4 border-solid border-primary">
-              <div className="flex flex-1 flex-col min-w-0">
+            <div className="px-5 py-3 rounded-xl flex justify-center border-b-4 border-solid border-primary">
+              <div className="flex flex-1 flex-col max-w-full">
                 <a
                   href={score.beatmapDetails.url}
                   target="_blank"
@@ -34,11 +34,11 @@ export default function ProfileAdjustmentList() {
                   {title}
                   <small className="block text-[87%]">{artist}</small>
                 </a>
-                <div className="flex gap-4 mt-1 whitespace-nowrap">
+                <div className="flex gap-4 whitespace-nowrap">
                   <span className="text-orange-300 overflow-hidden text-ellipsis whitespace-nowrap">
                     {difficulty}
                   </span>
-                  <span className="text-primary flex-none">
+                  <span className="text-primary flex-none hidden sm:block">
                     <time dateTime={score.timestamp.toJSON()}>
                       {score.timestamp.toLocaleDateString(undefined, {
                         year: "numeric",
@@ -47,6 +47,17 @@ export default function ProfileAdjustmentList() {
                         hour: "2-digit",
                         minute: "2-digit",
                         timeZoneName: "shortOffset",
+                      })}
+                    </time>
+                  </span>
+                  <span className="text-primary flex-none sm:hidden">
+                    <time dateTime={score.timestamp.toJSON()}>
+                      {score.timestamp.toLocaleDateString(undefined, {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
                       })}
                     </time>
                   </span>
@@ -60,21 +71,21 @@ export default function ProfileAdjustmentList() {
               <div className="flex">
                 <div>
                   <div className="text-[14px] font-semibold">
-                    <span className="text-orange-300 inline-block min-w-24">
+                    <span className="text-orange-300 inline-block w-16 sm:min-w-24">
                       {`${accuracy.toFixed(2)}%`}
                     </span>
-                    <span className="inline-block min-w-20 text-primary">
+                    <span className="block sm:inline-block sm:min-w-20 text-primary">
                       {`${round(score.pp * Math.pow(0.95, i), 0)}pp`}
                     </span>
                   </div>
-                  <div>
-                    <span className="inline-block min-w-24">
+                  <div className="flex">
+                    <span className="inline-block min-w-24 sm:block hidden">
                       {"weighed "}
                       <span className="text-primary font-semibold">
                         {round(Math.pow(0.95, i) * 100, 0)}%
                       </span>
                     </span>
-                    <span className="inline-block min-w-32 font-semibold">
+                    <span className="inline-block min-w-32 font-semibold hidden sm:block">
                       <span className="text-blue-500">{great}</span>
                       <span className="font-normal">{" / "}</span>
                       <span className="text-green-500">{ok}</span>
@@ -83,7 +94,7 @@ export default function ProfileAdjustmentList() {
                       {combo == maxCombo ? (
                         <span>{" FC"}</span>
                       ) : (
-                        <span className="font-normal">{` (${combo}x / ${maxCombo}x)`}</span>
+                        <span className="font-normal invisible sm:visible ">{` (${combo}x / ${maxCombo}x)`}</span>
                       )}
                     </span>
                   </div>

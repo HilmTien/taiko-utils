@@ -73,7 +73,7 @@ export default function ProfileAdjustmentApp({
         </Button>
         <ProfileAdjustmentSettings />
       </div>
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-col lg:flex-row">
         <ProfileAdjustmentList />
         <ProfileAdjustmentStats bonusPP={bonusPP} />
       </div>

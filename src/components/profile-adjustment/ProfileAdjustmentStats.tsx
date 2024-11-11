@@ -67,7 +67,7 @@ export default function ProfileAdjustmentStats({
   }
 
   return (
-    <div className="sticky top-4 h-screen w-full">
+    <div className="lg:sticky top-4 lg:h-screen lg:w-full order-1 lg:order-2">
       <div className="flex gap-1 justify-center">
         <div className="flex flex-col min-w-28">
           <div className="text-xs font-semibold">{"Live"}</div>
