@@ -30,7 +30,7 @@ export default function ProfileAdjustmentApp({
 
   React.useEffect(() => {
     dispatch({ type: "initTopPlays", data: data, userId: userId });
-  }, []);
+  }, [dispatch, data, userId]);
 
   const [bonusPP, setBonusPP] = React.useState(0);
 
@@ -48,7 +48,7 @@ export default function ProfileAdjustmentApp({
         }, 0);
       setBonusPP(bonusPP);
     }
-  }, [resSelf.data]);
+  }, [resSelf.data, data]);
 
   const pathname = usePathname();
 
