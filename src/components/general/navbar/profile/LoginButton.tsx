@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/atoms/Button";
 import Image from "next/image";
-import avatarGuest from "public/avatar-guest.png";
+import avatarGuest from "public/profile-pics/avatar-guest.png";
 
 export default function LoginButton() {
   async function login() {

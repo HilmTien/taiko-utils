@@ -5,13 +5,11 @@ import ProfileAdjustmentSection from "./sections/ProfileAdjustmentSection";
 
 export default function LandingPageApp() {
   return (
-    <>
-      <main className="mt-10">
-        <FrontSection />
-        <ODSection />
-        <ProfileAdjustmentSection />
-        <PPSection />
-      </main>
-    </>
+    <main className="mt-10">
+      <FrontSection />
+      <ODSection />
+      <ProfileAdjustmentSection />
+      <PPSection />
+    </main>
   );
 }
