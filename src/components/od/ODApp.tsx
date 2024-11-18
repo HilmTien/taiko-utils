@@ -22,7 +22,7 @@ export default function ODApp() {
       const data = JSON.parse(initialState);
       dispatch({ type: "useLocalStorage", state: data });
     }
-  }, []);
+  }, [dispatch]);
 
   React.useEffect(() => {
     const saveToLocalStorage = () => {

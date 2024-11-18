@@ -14,7 +14,7 @@ export default function AuthClient({ token }: { token: OsuToken }) {
         osuUser: makeOsuUserFromToken(token),
       },
     }).then((_) => window.close());
-  }, []);
+  }, [login, token]);
 
   return <div />;
 }
