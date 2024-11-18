@@ -7,7 +7,7 @@ import HallofFame from "./HallofFame";
 
 export default function Footer() {
   return (
-    <footer className="flex mt-52 mb-10">
+    <footer className="flex mt-auto pt-52 mb-10">
       <div className="flex flex-col mx-auto w-[900px] px-5">
         <div className="flex justify-between gap-2 items-center">
           <Link href="https://vercel.com" target="_blank">
