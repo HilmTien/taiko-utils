@@ -17,7 +17,7 @@ export default function NavApplications() {
   const [app, setApp] = React.useState(0);
 
   return (
-    <NavigationMenuList>
+    <NavigationMenuList className="hidden sm:block">
       <NavigationMenuItem>
         <NavigationMenuTrigger>Applications</NavigationMenuTrigger>
         <NavigationMenuContent>

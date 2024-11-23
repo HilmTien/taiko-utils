@@ -8,6 +8,7 @@ import Link from "next/link";
 import { UserExtended } from "osu-web.js";
 import useSWR from "swr";
 import NavApplications from "./nav-lists/NavApplications";
+import NavMenu from "./NavMenu";
 import ProfileHandler from "./profile/ProfileHandler";
 
 export default function Navbar() {
@@ -31,14 +32,15 @@ export default function Navbar() {
           <div className="h-10 w-10 mr-2">
             <HomeIcon />
           </div>
-          <h1 className="font-mono font-extrabold text-nowrap whitespace-nowrap hidden sm:block">
+          <h1 className="font-mono font-extrabold text-nowrap whitespace-nowrap">
             TAIKO UTILS
           </h1>
         </Link>
         <NavigationMenu>
           <NavApplications />
         </NavigationMenu>
-        <ProfileHandler />
+        <ProfileHandler isMobile={false} />
+        <NavMenu />
       </div>
     </header>
   );

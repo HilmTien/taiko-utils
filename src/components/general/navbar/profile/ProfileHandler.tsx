@@ -13,7 +13,11 @@ import { UserExtended } from "osu-web.js";
 import useSWR from "swr";
 import LoginButton from "./LoginButton";
 
-export default function ProfileHandler() {
+interface ProfileHandlerProps {
+  isMobile: boolean;
+}
+
+export default function ProfileHandler({ isMobile }: ProfileHandlerProps) {
   const res = useSWR<UserExtended>("/api/osu/get-self", fetcher);
   const data = res.data;
 
@@ -33,7 +37,11 @@ export default function ProfileHandler() {
     <>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="h-12" variant={"ghost"} size={"default"}>
+          <Button
+            className={isMobile ? "h-12" : "h-12 hidden sm:inline-flex"}
+            variant={"ghost"}
+            size={"default"}
+          >
             <>
               <Image
                 src={data.avatar_url}
