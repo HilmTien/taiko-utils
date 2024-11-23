@@ -37,7 +37,7 @@ export default function PPDisplay() {
   const diffPP = round(pp - maxPP);
 
   return (
-    <Card className="w-[550px]">
+    <Card className="w-[310px] min-[550px]:w-[550px]">
       <CardHeader className="items-center">
         <CardTitle className="text-4xl">{pp}pp</CardTitle>
         <CardDescription className="self-end">

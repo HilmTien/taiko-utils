@@ -13,7 +13,7 @@ export default function MapStatsCard() {
   const dispatch = React.useContext(PPDispatchContext);
 
   return (
-    <Card className="w-96">
+    <Card className="w-[310px] min-[550px]:w-96">
       <CardHeader>
         <CardTitle className="flex justify-center">Map Stats</CardTitle>
       </CardHeader>
