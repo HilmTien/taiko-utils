@@ -9,7 +9,7 @@ import {
   MagnifyingGlassIcon,
   PresentationChartLineIcon,
 } from "@heroicons/react/24/outline";
-import NavApplicationsItem from "./NavApplicationsItem";
+import NavApplicationsItem from "../nav-items/NavApplicationsItem";
 
 export default function NavApplications() {
   const apps = [
