@@ -40,7 +40,7 @@ export default function NavApplications() {
         <NavigationMenuContent>
           <ul className="flex flex-col p-3">
             {apps.map((app) => (
-              <NavApplicationsItem {...app} />
+              <NavApplicationsItem {...app} key={app.href} />
             ))}
           </ul>
         </NavigationMenuContent>
