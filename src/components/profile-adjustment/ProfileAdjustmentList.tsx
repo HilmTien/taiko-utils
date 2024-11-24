@@ -67,25 +67,25 @@ export default function ProfileAdjustmentList() {
                 </div>
               </div>
             </div>
-            <div className="px-5 py-3 relative">
+            <div className="px-5 py-3 flex justify-between">
               <div className="flex">
                 <div>
                   <div className="text-[14px] font-semibold">
-                    <span className="text-orange-300 inline-block w-16 sm:min-w-24">
+                    <span className="text-orange-300 inline-block sm:min-w-24">
                       {`${accuracy.toFixed(2)}%`}
                     </span>
-                    <span className="block sm:inline-block sm:min-w-20 text-primary">
+                    <span className="block sm:inline-block text-primary">
                       {`${round(score.pp * Math.pow(0.95, i), 0)}pp`}
                     </span>
                   </div>
                   <div className="flex">
-                    <span className="inline-block min-w-24 sm:block hidden">
+                    <span className="sm:inline-block min-w-24 hidden">
                       {"weighed "}
                       <span className="text-primary font-semibold">
                         {round(Math.pow(0.95, i) * 100, 0)}%
                       </span>
                     </span>
-                    <span className="inline-block min-w-32 font-semibold hidden sm:block">
+                    <span className="sm:inline-block font-semibold hidden">
                       <span className="text-blue-500">{great}</span>
                       <span className="font-normal">{" / "}</span>
                       <span className="text-green-500">{ok}</span>
@@ -100,7 +100,7 @@ export default function ProfileAdjustmentList() {
                   </div>
                 </div>
               </div>
-              <div className="absolute bottom-2 right-5 flex gap-3 items-center">
+              <div className="flex sm:gap-3 gap-1 items-center">
                 <div className="font-bold text-[16px]">
                   {`${round(score.pp, 0)}pp`}
                 </div>
