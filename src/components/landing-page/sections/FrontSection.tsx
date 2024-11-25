@@ -32,10 +32,10 @@ export default function FrontSection() {
   ];
 
   return (
-    <section className="place-items-center h-[550px] px-5">
+    <section className="flex flex-col justify-center items-center h-[550px] px-5">
       <Image src={taiko} alt="tako" className="w-96" />
-      <h1 className="text-6xl font-extrabold">Taiko Utils</h1>
-      <p className="pt-5 text-lg text-violet-200 opacity-50">
+      <h1 className="text-6xl font-extrabold text-center">Taiko Utils</h1>
+      <p className="pt-5 text-lg text-center text-violet-200 opacity-50">
         We strive to deliver useful utilities for osu! players that specialize
         in Taiko.
       </p>
