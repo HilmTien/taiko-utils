@@ -4,7 +4,11 @@ import { Button } from "@/components/ui/atoms/Button";
 import Image from "next/image";
 import avatarGuest from "public/profile-pics/avatar-guest.png";
 
-export default function LoginButton() {
+interface LoginButtonProps {
+  isMobile: boolean;
+}
+
+export default function LoginButton({ isMobile }: LoginButtonProps) {
   async function login() {
     const width = 600;
     const height = 800;
@@ -33,7 +37,12 @@ export default function LoginButton() {
   }
 
   return (
-    <Button className="h-12" variant={"ghost"} size={"default"} onClick={login}>
+    <Button
+      className={isMobile ? "h-12" : "h-12 hidden sm:inline-flex"}
+      variant={"ghost"}
+      size={"default"}
+      onClick={login}
+    >
       <>
         <Image
           src={avatarGuest}

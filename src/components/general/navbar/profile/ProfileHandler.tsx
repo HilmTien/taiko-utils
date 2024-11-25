@@ -63,6 +63,6 @@ export default function ProfileHandler({ isMobile }: ProfileHandlerProps) {
       </DropdownMenu>
     </>
   ) : (
-    <LoginButton />
+    <LoginButton isMobile={isMobile} />
   );
 }
