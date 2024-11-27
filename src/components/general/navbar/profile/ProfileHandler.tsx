@@ -29,7 +29,10 @@ export default function ProfileHandler({ isMobile }: ProfileHandlerProps) {
   };
 
   return data === undefined ? (
-    <Button disabled>
+    <Button
+      disabled
+      className={isMobile ? "h-12" : "h-12 hidden sm:inline-flex"}
+    >
       <Loader2 className="h-4 w-4 animate-spin" />
       <span className="ml-4">Loading</span>
     </Button>
